@@ -74,6 +74,5 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 | --- | --- | --- | --- | --- |
 | 1.0.4 (build 1) | [releases/1.0.4/tvs-selfsign-1.0.4.ipa](releases/1.0.4/tvs-selfsign-1.0.4.ipa) | 34 MB | `fbf57c314393b09ee1e87beddb894a1907357a8107586fec479b3ea6e5a56e08` | 2025-08-09 |
 
-- 源码仓库：本机 `~/Desktop/GIt/tvs`（Flutter 项目）
 - IPA 为自签名（selfsign）Release 构建
 - 每个版本对应一个 git tag（如 `v1.0.4`）
