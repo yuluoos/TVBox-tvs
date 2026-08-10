@@ -63,8 +63,15 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 
 | 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- |
-| 1.0.5 (build 1) | [releases/1.0.5/tvs-selfsign-1.0.5.ipa](releases/1.0.5/tvs-selfsign-1.0.5.ipa) | 34 MB | `7f809a073057199e814d40c0e9b56df658349f4287ca9de64fec231fca82fa9e` | 2025-08-10 |
+| 1.0.5 (build 1) | [releases/1.0.5/tvs-selfsign-1.0.5.ipa](releases/1.0.5/tvs-selfsign-1.0.5.ipa) | 34 MB | `4ab15bdd956bbcf0183183403a8b2dcf98016e9a56432f1e9673a1dd5bc79262` | 2025-08-10 |
 | 1.0.4 (build 1) | [releases/1.0.4/tvs-selfsign-1.0.4.ipa](releases/1.0.4/tvs-selfsign-1.0.4.ipa) | 34 MB | `fbf57c314393b09ee1e87beddb894a1907357a8107586fec479b3ea6e5a56e08` | 2025-08-09 |
 
 - IPA 为自签名（selfsign）Release 构建
 - 每个版本对应一个 git tag（如 `v1.0.4`）
+
+### 1.0.5 更新内容
+
+- 修复闪退后本地服务恢复失败的问题
+- 加固 m3u8 广告过滤与资源代理
+- 首页重试时显示加载指示
+- 优化核心数据加载链路
