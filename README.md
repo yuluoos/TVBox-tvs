@@ -63,7 +63,7 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 
 | 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- |
-| 1.0.6 (build 1) | [releases/1.0.6/tvs-selfsign-1.0.6.ipa](releases/1.0.6/tvs-selfsign-1.0.6.ipa) | 34 MB | `161785f69842d1580566c6c99dfa5d82b2c0c1ffdca49e7e15f5a2ce9c9a3c3a` | 2026-08-11 |
+| 1.0.6 (build 1) | [releases/1.0.6/tvs-selfsign-1.0.6.ipa](releases/1.0.6/tvs-selfsign-1.0.6.ipa) | 34 MB | `fabce9393dd54c9377292a5ef1f60b0489401d122b8d4caef49a42439c0f4df8` | 2026-08-11 |
 | 1.0.5 (build 1) | [releases/1.0.5/tvs-selfsign-1.0.5.ipa](releases/1.0.5/tvs-selfsign-1.0.5.ipa) | 34 MB | `4ab15bdd956bbcf0183183403a8b2dcf98016e9a56432f1e9673a1dd5bc79262` | 2026-08-10 |
 | 1.0.4 (build 1) | [releases/1.0.4/tvs-selfsign-1.0.4.ipa](releases/1.0.4/tvs-selfsign-1.0.4.ipa) | 34 MB | `fbf57c314393b09ee1e87beddb894a1907357a8107586fec479b3ea6e5a56e08` | 2026-08-09 |
 
@@ -86,6 +86,10 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 - 兼容 AppV6 符号键 ext 解码失败的订阅
 - 无订阅时不再误报本地服务恢复失败
 - Android 构建增加 x86_64 ABI 支持
+- 修复外部 HLS 相对地址播放失败
+- 修复本地播放请求头处理与搜索页卸载异常
+- 修复悦听播放兼容与音频分流问题
+- 优化密集弹幕的轨道分配
 
 ### 1.0.5 更新内容
 
