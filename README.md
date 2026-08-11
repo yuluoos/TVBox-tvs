@@ -63,11 +63,29 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 
 | 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- |
-| 1.0.5 (build 1) | [releases/1.0.5/tvs-selfsign-1.0.5.ipa](releases/1.0.5/tvs-selfsign-1.0.5.ipa) | 34 MB | `4ab15bdd956bbcf0183183403a8b2dcf98016e9a56432f1e9673a1dd5bc79262` | 2025-08-10 |
-| 1.0.4 (build 1) | [releases/1.0.4/tvs-selfsign-1.0.4.ipa](releases/1.0.4/tvs-selfsign-1.0.4.ipa) | 34 MB | `fbf57c314393b09ee1e87beddb894a1907357a8107586fec479b3ea6e5a56e08` | 2025-08-09 |
+| 1.0.6 (build 1) | [releases/1.0.6/tvs-selfsign-1.0.6.ipa](releases/1.0.6/tvs-selfsign-1.0.6.ipa) | 34 MB | `161785f69842d1580566c6c99dfa5d82b2c0c1ffdca49e7e15f5a2ce9c9a3c3a` | 2026-08-11 |
+| 1.0.5 (build 1) | [releases/1.0.5/tvs-selfsign-1.0.5.ipa](releases/1.0.5/tvs-selfsign-1.0.5.ipa) | 34 MB | `4ab15bdd956bbcf0183183403a8b2dcf98016e9a56432f1e9673a1dd5bc79262` | 2026-08-10 |
+| 1.0.4 (build 1) | [releases/1.0.4/tvs-selfsign-1.0.4.ipa](releases/1.0.4/tvs-selfsign-1.0.4.ipa) | 34 MB | `fbf57c314393b09ee1e87beddb894a1907357a8107586fec479b3ea6e5a56e08` | 2026-08-09 |
 
 - IPA 为自签名（selfsign）Release 构建
 - 每个版本对应一个 git tag（如 `v1.0.4`）
+
+### 1.0.6 更新内容
+
+- 界面统一为暗色液态玻璃风格：播放器浮层、选集面板、直播频道列表与全应用弹窗
+- 首页默认选中第一个分类并展示筛选栏，筛选项不再重复；首个分类改为后台加载，进入更快
+- 站点切换失败时保留原有首页内容，不再清空
+- 直播频道列表打开时自动定位到当前频道
+- 竖屏短剧支持上下滑动切集
+- 音频播放支持列表循环 / 单曲循环 / 随机播放
+- 长文本改为单行展示，放不下时自动滚动
+- 修复设置页解码与网络配置不生效的问题
+- 修复歌单封面在首页与播放相关界面不显示
+- 焦点高亮效果仅在 TV 端展示
+- 站点错误提示更可读（Node 403 转换、ECONNRESET 按错误码降级）
+- 兼容 AppV6 符号键 ext 解码失败的订阅
+- 无订阅时不再误报本地服务恢复失败
+- Android 构建增加 x86_64 ABI 支持
 
 ### 1.0.5 更新内容
 
