@@ -63,12 +63,26 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 
 | 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- |
+| 1.0.7 (build 1) | [releases/1.0.7/tvs-selfsign-1.0.7.ipa](releases/1.0.7/tvs-selfsign-1.0.7.ipa) | 34 MB | `a2f7d00f3eb12029cdd3bad61e475b24342cba53449fba24962eebcbd65baf71` | 2026-08-12 |
 | 1.0.6 (build 1) | [releases/1.0.6/tvs-selfsign-1.0.6.ipa](releases/1.0.6/tvs-selfsign-1.0.6.ipa) | 34 MB | `fabce9393dd54c9377292a5ef1f60b0489401d122b8d4caef49a42439c0f4df8` | 2026-08-11 |
 | 1.0.5 (build 1) | [releases/1.0.5/tvs-selfsign-1.0.5.ipa](releases/1.0.5/tvs-selfsign-1.0.5.ipa) | 34 MB | `4ab15bdd956bbcf0183183403a8b2dcf98016e9a56432f1e9673a1dd5bc79262` | 2026-08-10 |
 | 1.0.4 (build 1) | [releases/1.0.4/tvs-selfsign-1.0.4.ipa](releases/1.0.4/tvs-selfsign-1.0.4.ipa) | 34 MB | `fbf57c314393b09ee1e87beddb894a1907357a8107586fec479b3ea6e5a56e08` | 2026-08-09 |
 
 - IPA 为自签名（selfsign）Release 构建
 - 每个版本对应一个 git tag（如 `v1.0.4`）
+
+### 1.0.7 更新内容
+
+- 音频播放接入系统中断与音频焦点协调：来电、其他应用抢占后自动暂停，中断结束后恢复播放
+- 切集时立即隔离并停止上一个播放源，避免解析较慢时上一集仍在后台发声
+- 多次快速切集不再按数据库写入顺序倒序生效
+- 仅在播放进度超过 90% 时判定为播放完成，修复加载失败被误判「完成」导致的连续空切下一集
+- 音频播放遇到瞬时错误时留出缓冲期自动恢复，不再直接中断整段播放
+- 播放器事件订阅按播放源代次隔离，旧播放源的回调不再影响新播放
+- 听剧页补充加载中与错误状态展示，不再是空白页
+- 视频续播与片头跳过改为等待有效时长后执行，避免打开媒体期间的事件被丢弃
+- 播放器浮层进度控件重构，手势拖动进度显示更准确
+- Android 增加 WAKE_LOCK 权限，后台听剧更稳定
 
 ### 1.0.6 更新内容
 
