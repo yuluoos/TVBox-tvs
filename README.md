@@ -61,6 +61,8 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 
 ## 版本记录
 
+### iOS（IPA）
+
 | 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- |
 | 1.0.7 (build 1) | [releases/1.0.7/tvs-selfsign-1.0.7.ipa](releases/1.0.7/tvs-selfsign-1.0.7.ipa) | 34 MB | `a2f7d00f3eb12029cdd3bad61e475b24342cba53449fba24962eebcbd65baf71` | 2026-08-12 |
@@ -70,6 +72,20 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 
 - IPA 为自签名（selfsign）Release 构建
 - 每个版本对应一个 git tag（如 `v1.0.4`）
+
+### Android（APK）
+
+按 ABI 分包，请按设备架构选择；绝大多数手机与电视盒子用 **arm64-v8a**。
+
+| 版本 | ABI | 文件 | 大小 | SHA-256 | 打包日期 |
+| --- | --- | --- | --- | --- | --- |
+| 1.0.7 (build 1) | arm64-v8a | [releases/1.0.7/tvs-1.0.7-arm64-v8a.apk](releases/1.0.7/tvs-1.0.7-arm64-v8a.apk) | 32 MB | `42022bb707be6aa8d614fca70de4554fdf0940938b789dfc775fc2dc66f782e8` | 2026-08-12 |
+| 1.0.7 (build 1) | armeabi-v7a | [releases/1.0.7/tvs-1.0.7-armeabi-v7a.apk](releases/1.0.7/tvs-1.0.7-armeabi-v7a.apk) | 31 MB | `dbb8a484798c5673f76b736eab66b6a4d4753bfec2998278947b63fc56c8061a` | 2026-08-12 |
+| 1.0.7 (build 1) | x86_64 | [releases/1.0.7/tvs-1.0.7-x86_64.apk](releases/1.0.7/tvs-1.0.7-x86_64.apk) | 34 MB | `20409fb22730743d0f172155daf3eb361f5af4288a9cb428d308d776e296a798` | 2026-08-12 |
+
+- APK 为 Release 构建，使用调试密钥签名，仅供侧载安装
+- nodejs-mobile 上游无 32 位 x86 产物，故不提供 x86 包
+- native 库采用压缩打包（`useLegacyPackaging`），安装时由系统解压，设备上会额外占用约 80 MB
 
 ### 1.0.7 更新内容
 
@@ -83,6 +99,7 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 - 视频续播与片头跳过改为等待有效时长后执行，避免打开媒体期间的事件被丢弃
 - 播放器浮层进度控件重构，手势拖动进度显示更准确
 - Android 增加 WAKE_LOCK 权限，后台听剧更稳定
+- Android 首次提供 APK 发布包，native 库改为压缩打包，安装包由约 88 MB 降至约 33 MB
 
 ### 1.0.6 更新内容
 
