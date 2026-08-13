@@ -65,6 +65,7 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 
 | 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- |
+| 1.0.8 (build 1) | [releases/1.0.8/tvs-selfsign-1.0.8.ipa](releases/1.0.8/tvs-selfsign-1.0.8.ipa) | 34 MB | `ab59b64f443c39dd82c4ffa6c5bcb75c7120a24d014ee5266b53c3016903cd5b` | 2026-08-13 |
 | 1.0.7 (build 1) | [releases/1.0.7/tvs-selfsign-1.0.7.ipa](releases/1.0.7/tvs-selfsign-1.0.7.ipa) | 34 MB | `a2f7d00f3eb12029cdd3bad61e475b24342cba53449fba24962eebcbd65baf71` | 2026-08-12 |
 | 1.0.6 (build 1) | [releases/1.0.6/tvs-selfsign-1.0.6.ipa](releases/1.0.6/tvs-selfsign-1.0.6.ipa) | 34 MB | `fabce9393dd54c9377292a5ef1f60b0489401d122b8d4caef49a42439c0f4df8` | 2026-08-11 |
 | 1.0.5 (build 1) | [releases/1.0.5/tvs-selfsign-1.0.5.ipa](releases/1.0.5/tvs-selfsign-1.0.5.ipa) | 34 MB | `4ab15bdd956bbcf0183183403a8b2dcf98016e9a56432f1e9673a1dd5bc79262` | 2026-08-10 |
@@ -79,13 +80,33 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 
 | 版本 | ABI | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- | --- |
+| 1.0.8 (build 1) | arm64-v8a | [releases/1.0.8/tvs-1.0.8-arm64-v8a.apk](releases/1.0.8/tvs-1.0.8-arm64-v8a.apk) | 32 MB | `acc2f3db4eb04f4980c8f9f31a6a78b2e23cc4a774774c35b3d36b2c7f5efc98` | 2026-08-13 |
+| 1.0.8 (build 1) | armeabi-v7a | [releases/1.0.8/tvs-1.0.8-armeabi-v7a.apk](releases/1.0.8/tvs-1.0.8-armeabi-v7a.apk) | 31 MB | `ca05a484fe63662b2c7cdd6eadcfd356e19db07b62486fa953fea580672d6361` | 2026-08-13 |
+| 1.0.8 (build 1) | x86_64 | [releases/1.0.8/tvs-1.0.8-x86_64.apk](releases/1.0.8/tvs-1.0.8-x86_64.apk) | 34 MB | `adb0f0230bb4e087b1a766099ed41bb5dc2fd71c3943c9d7ace6faaf7deaae4d` | 2026-08-13 |
 | 1.0.7 (build 1) | arm64-v8a | [releases/1.0.7/tvs-1.0.7-arm64-v8a.apk](releases/1.0.7/tvs-1.0.7-arm64-v8a.apk) | 32 MB | `42022bb707be6aa8d614fca70de4554fdf0940938b789dfc775fc2dc66f782e8` | 2026-08-12 |
 | 1.0.7 (build 1) | armeabi-v7a | [releases/1.0.7/tvs-1.0.7-armeabi-v7a.apk](releases/1.0.7/tvs-1.0.7-armeabi-v7a.apk) | 31 MB | `dbb8a484798c5673f76b736eab66b6a4d4753bfec2998278947b63fc56c8061a` | 2026-08-12 |
 | 1.0.7 (build 1) | x86_64 | [releases/1.0.7/tvs-1.0.7-x86_64.apk](releases/1.0.7/tvs-1.0.7-x86_64.apk) | 34 MB | `20409fb22730743d0f172155daf3eb361f5af4288a9cb428d308d776e296a798` | 2026-08-12 |
 
+- 最低支持 Android 7.0（API 24），targetSdk 36
 - APK 为 Release 构建，使用调试密钥签名，仅供侧载安装
 - nodejs-mobile 上游无 32 位 x86 产物，故不提供 x86 包
 - native 库采用压缩打包（`useLegacyPackaging`），安装时由系统解压，设备上会额外占用约 80 MB
+
+### 1.0.8 更新内容
+
+本次以 TV / 遥控器体验为主。
+
+- **新增手机扫码添加订阅**：电视端显示二维码与配对码，手机扫码后在网页填写订阅地址，经局域网直传到电视，链接 5 分钟有效，免去用遥控器输入长网址
+- 配置中心改为内嵌 WebView 打开，电视上没有外部浏览器也能使用
+- 全面梳理遥控器焦点：路由与主框架、玻璃弹窗、播放器对话框、播放器工具栏、直播页、听剧页控件均可用 D-pad 到达并操作
+- 玻璃弹窗焦点隔离，方向键不再串到底层页面
+- 视频画面与控件的焦点分离，工具栏获得焦点时高亮常驻可见
+- 修复 Android TV 上需要按两次返回键才能退出的问题
+- 退出播放页时正确停止音频播放
+- 修复电视端对话框输入框的焦点导航
+- 直播页焦点流转与控件操作改进
+- 修复 iOS 上来电等中断结束后音频不自动恢复
+- 优化 Android 启动图标，补齐自适应图标
 
 ### 1.0.7 更新内容
 
