@@ -1,8 +1,8 @@
 # TVS — 影视聚合空壳播放器
 
-TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播放器，采用羊壳（PeekPili）一类的"空壳"设计：**应用本体不内置任何影视内容、频道或数据源**，安装后是一个空壳，所有内容均由用户自行导入订阅配置和直播源后才可用。**订阅仅适用于羊壳（PeekPili）格式**。应用只提供解析、聚合与播放能力，内容的合法性与可用性由用户导入的源决定。
+TVS 是一款基于 Flutter 开发的跨平台（iOS / Android / macOS）影视聚合播放器，采用羊壳（PeekPili）一类的"空壳"设计：**应用本体不内置任何影视内容、频道或数据源**，安装后是一个空壳，所有内容均由用户自行导入订阅配置和直播源后才可用。**订阅仅适用于羊壳（PeekPili）格式**。应用只提供解析、聚合与播放能力，内容的合法性与可用性由用户导入的源决定。
 
-本仓库用于管理 TVS 的打包产物（IPA），版本记录见文末。
+本仓库用于管理 TVS 的打包产物（IPA / APK / DMG），版本记录见文末。
 
 ---
 
@@ -51,7 +51,7 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 
 ## 技术栈
 
-基于 Flutter 开发，iOS / Android 双端；播放内核为 libmpv（media_kit），数据全部本地存储。
+基于 Flutter 开发，覆盖 iOS / Android / macOS；播放内核为 libmpv（media_kit），数据全部本地存储。
 
 ## 免责声明
 
@@ -92,6 +92,16 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 - nodejs-mobile 上游无 32 位 x86 产物，故不提供 x86 包
 - native 库采用压缩打包（`useLegacyPackaging`），安装时由系统解压，设备上会额外占用约 80 MB
 
+### macOS（DMG）
+
+| 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
+| --- | --- | --- | --- | --- |
+| 1.0.8 (build 1) | [releases/1.0.8/tvs-1.0.8.dmg](releases/1.0.8/tvs-1.0.8.dmg) | 41 MB | `fe5ebb213c7fd5c9bc5ab7802eb47c7a22e92b34222a70f28e8db2eaa243d5f5` | 2026-08-13 |
+
+- 仅提供 Apple Silicon（arm64）版本：内置的 Node 运行时上游只有 darwin-arm64 产物，Intel Mac 无法运行爬虫源
+- DMG 使用 LZMA（ULMO）压缩，需 macOS 10.15+ 挂载
+- 应用为 ad-hoc 自签名，首次打开会被 Gatekeeper 拦截；请在「访达」中右键点击 → 打开，或到「系统设置 → 隐私与安全性」中允许
+
 ### 1.0.8 更新内容
 
 本次以 TV / 遥控器体验为主。
@@ -107,6 +117,7 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android）影视聚合播
 - 直播页焦点流转与控件操作改进
 - 修复 iOS 上来电等中断结束后音频不自动恢复
 - 优化 Android 启动图标，补齐自适应图标
+- **新增 macOS 版本**：内嵌 Node 运行时，桌面端同样支持 nodejs 类型 spider 站点；产物瘦身为纯 arm64 并重新签名，安装包约 41 MB
 
 ### 1.0.7 更新内容
 
