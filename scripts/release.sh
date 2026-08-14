@@ -7,7 +7,7 @@
 #   --skip-build  复用 tvs 仓库 build/ 下已有产物，不重新构建
 #   --dry-run     只打包与生成改动，不建 Release、不提交、不推送
 #
-# 前置：gh 已登录；源码仓库在 $TVS_SRC（默认 ~/Desktop/GIt/tvs）。
+# 前置：gh 已登录；源码仓库在 ${TVS_SRC}（默认 ~/Desktop/GIt/tvs）。
 
 set -euo pipefail
 
@@ -33,12 +33,12 @@ done
 
 [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "错误：版本号格式应为 x.y.z" >&2; exit 1; }
 [[ -f "$NOTES" ]] || { echo "错误：找不到更新内容文件 $NOTES" >&2; exit 1; }
-[[ -d "$SRC" ]] || { echo "错误：找不到源码仓库 $SRC（可用 TVS_SRC 指定）" >&2; exit 1; }
+[[ -d "$SRC" ]] || { echo "错误：找不到源码仓库 ${SRC}（可用 TVS_SRC 指定）" >&2; exit 1; }
 
 PUBSPEC_VERSION=$(sed -n 's/^version: *\([^ +]*\).*/\1/p' "$SRC/pubspec.yaml")
 BUILD_NUMBER=$(sed -n 's/^version: *[^+]*+\(.*\)/\1/p' "$SRC/pubspec.yaml")
 [[ "$PUBSPEC_VERSION" == "$VERSION" ]] || {
-  echo "错误：pubspec.yaml 是 $PUBSPEC_VERSION，与要发的 $VERSION 不一致" >&2; exit 1; }
+  echo "错误：pubspec.yaml 是 ${PUBSPEC_VERSION}，与要发的 $VERSION 不一致" >&2; exit 1; }
 
 if [[ -n $(git status --porcelain) ]]; then
   echo "错误：当前仓库有未提交改动，先处理干净再发版" >&2; exit 1
@@ -127,7 +127,7 @@ io.open(sys.argv[3], 'w', encoding='utf-8').write(notes + '\n' + '\n'.join(rows)
 PY
 
 if [[ $DRY_RUN -eq 1 ]]; then
-  echo "==> dry-run：产物在 $STAGE，README 已改但未提交，Release 未创建"
+  echo "==> dry-run：产物在 ${STAGE}，README 已改但未提交，Release 未创建"
   exit 0
 fi
 
