@@ -65,6 +65,7 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android / macOS）聚合�
 
 | 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- |
+| 1.0.9 (build 1) | [releases/1.0.9/tvs-selfsign-1.0.9.ipa](releases/1.0.9/tvs-selfsign-1.0.9.ipa) | 34 MB | `7b5427d4f06df3d121906f135cad60dcff4131013d4717d8c1073b5c6a477ce8` | 2026-08-13 |
 | 1.0.8 (build 1) | [releases/1.0.8/tvs-selfsign-1.0.8.ipa](releases/1.0.8/tvs-selfsign-1.0.8.ipa) | 34 MB | `ab59b64f443c39dd82c4ffa6c5bcb75c7120a24d014ee5266b53c3016903cd5b` | 2026-08-13 |
 | 1.0.7 (build 1) | [releases/1.0.7/tvs-selfsign-1.0.7.ipa](releases/1.0.7/tvs-selfsign-1.0.7.ipa) | 34 MB | `a2f7d00f3eb12029cdd3bad61e475b24342cba53449fba24962eebcbd65baf71` | 2026-08-12 |
 | 1.0.6 (build 1) | [releases/1.0.6/tvs-selfsign-1.0.6.ipa](releases/1.0.6/tvs-selfsign-1.0.6.ipa) | 34 MB | `fabce9393dd54c9377292a5ef1f60b0489401d122b8d4caef49a42439c0f4df8` | 2026-08-11 |
@@ -80,6 +81,9 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android / macOS）聚合�
 
 | 版本 | ABI | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- | --- |
+| 1.0.9 (build 1) | arm64-v8a | [releases/1.0.9/tvs-1.0.9-arm64-v8a.apk](releases/1.0.9/tvs-1.0.9-arm64-v8a.apk) | 32 MB | `b9759acdbfd328ef68cfcb92511b3c36741d215d654505337f974d554d0dded2` | 2026-08-13 |
+| 1.0.9 (build 1) | armeabi-v7a | [releases/1.0.9/tvs-1.0.9-armeabi-v7a.apk](releases/1.0.9/tvs-1.0.9-armeabi-v7a.apk) | 31 MB | `23ba9892f7cb79ad93be6dad5b36b7cdfdbc3c74ce2ec9b885d8538295aa0ebd` | 2026-08-13 |
+| 1.0.9 (build 1) | x86_64 | [releases/1.0.9/tvs-1.0.9-x86_64.apk](releases/1.0.9/tvs-1.0.9-x86_64.apk) | 34 MB | `4d184042996dda6511e67e80fbc0f1ca6c9a6729ccaf56538add95065eed1400` | 2026-08-13 |
 | 1.0.8 (build 1) | arm64-v8a | [releases/1.0.8/tvs-1.0.8-arm64-v8a.apk](releases/1.0.8/tvs-1.0.8-arm64-v8a.apk) | 32 MB | `acc2f3db4eb04f4980c8f9f31a6a78b2e23cc4a774774c35b3d36b2c7f5efc98` | 2026-08-13 |
 | 1.0.8 (build 1) | armeabi-v7a | [releases/1.0.8/tvs-1.0.8-armeabi-v7a.apk](releases/1.0.8/tvs-1.0.8-armeabi-v7a.apk) | 31 MB | `ca05a484fe63662b2c7cdd6eadcfd356e19db07b62486fa953fea580672d6361` | 2026-08-13 |
 | 1.0.8 (build 1) | x86_64 | [releases/1.0.8/tvs-1.0.8-x86_64.apk](releases/1.0.8/tvs-1.0.8-x86_64.apk) | 34 MB | `adb0f0230bb4e087b1a766099ed41bb5dc2fd71c3943c9d7ace6faaf7deaae4d` | 2026-08-13 |
@@ -96,11 +100,24 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android / macOS）聚合�
 
 | 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- |
+| 1.0.9 (build 1) | [releases/1.0.9/tvs-1.0.9.dmg](releases/1.0.9/tvs-1.0.9.dmg) | 41 MB | `d599a4f8028a2c480cbcaa1085d0cd392f9f3eaff9e3c24c89bb9a2774758fe6` | 2026-08-13 |
 | 1.0.8 (build 1) | [releases/1.0.8/tvs-1.0.8.dmg](releases/1.0.8/tvs-1.0.8.dmg) | 41 MB | `fe5ebb213c7fd5c9bc5ab7802eb47c7a22e92b34222a70f28e8db2eaa243d5f5` | 2026-08-13 |
 
 - 仅提供 Apple Silicon（arm64）版本：内置的 Node 运行时上游只有 darwin-arm64 产物，Intel Mac 无法运行爬虫源
 - DMG 使用 LZMA（ULMO）压缩，需 macOS 10.15+ 挂载
 - 应用为 ad-hoc 自签名，首次打开会被 Gatekeeper 拦截；请在「访达」中右键点击 → 打开，或到「系统设置 → 隐私与安全性」中允许
+
+### 1.0.9 更新内容
+
+本次以 TV 端播放稳定性与焦点体验为主，并新增版本更新提醒。
+
+- **新增版本更新提醒**：应用会检查本仓库 `releases` 下的最新版本，有新版时弹窗提示并可一键前往 GitHub 下载；设置页也可手动检查
+- Android TV 上关闭硬件解码，修复部分盒子花屏 / 黑屏与播放不稳定；设置页解码选项在 TV 上相应调整
+- 修复 Android 视频与直播播放链路：播放器状态同步与直播控制器切换更稳定
+- TV 播放器菜单无操作后自动隐藏，不再长期遮挡画面
+- 修复 TV 上片头片尾跳过设置入口与对话框焦点
+- 修复 TV 播放页返回时未回到详情页的问题（听剧页同样修正）
+- TV 焦点视觉统一：首页、搜索、直播频道列表、设置、影片卡片与玻璃组件的焦点高亮更清晰一致
 
 ### 1.0.8 更新内容
 
