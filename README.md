@@ -1,5 +1,21 @@
 # TVS — 聚合播放器
 
+> TVBox 类空壳聚合播放器 · Flutter 跨平台 · Android TV / 电视盒子 / iOS / iPadOS / macOS · 提供 APK / IPA / DMG 直接下载
+>
+> A TVBox-style shell media player built with Flutter for Android TV, iOS and macOS — no built-in content, bring your own subscription and live sources.
+
+## 下载（最新版 1.0.9）
+
+| 平台 | 下载 | 说明 |
+| --- | --- | --- |
+| Android / Android TV / 电视盒子 | [arm64-v8a APK](releases/1.0.9/tvs-1.0.9-arm64-v8a.apk) · [armeabi-v7a](releases/1.0.9/tvs-1.0.9-armeabi-v7a.apk) · [x86_64](releases/1.0.9/tvs-1.0.9-x86_64.apk) | 绝大多数设备选 arm64-v8a |
+| iOS / iPadOS | [自签名 IPA](releases/1.0.9/tvs-selfsign-1.0.9.ipa) | 需自行签名侧载（如爱思、巨魔、AltStore、自签 API） |
+| macOS（Apple Silicon） | [DMG](releases/1.0.9/tvs-1.0.9.dmg) | 首次打开需在「隐私与安全性」中放行 |
+
+历史版本与 SHA-256 校验值见文末[版本记录](#版本记录)。
+
+---
+
 TVS 是一款基于 Flutter 开发的跨平台（iOS / Android / macOS）聚合播放器，采用羊壳（PeekPili）一类的"空壳"设计：**应用本体不内置任何内容、频道或数据源**，安装后是一个空壳，所有内容均由用户自行导入订阅配置和直播源后才可用。**订阅仅适用于羊壳（PeekPili）格式**。应用只提供解析、聚合与播放能力，内容的合法性与可用性由用户导入的源决定。
 
 本仓库用于管理 TVS 的打包产物（IPA / APK / DMG），版本记录见文末。
@@ -52,6 +68,12 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android / macOS）聚合�
 ## 技术栈
 
 基于 Flutter 开发，覆盖 iOS / Android / macOS；播放内核为 libmpv（media_kit），数据全部本地存储。
+
+## 关键词 / Keywords
+
+TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应用、Android TV 播放器、ATV apk、TV 版播放器、遥控器 D-pad 适配、羊壳、PeekPili 订阅、直播源播放器、M3U / IPTV 播放器、Flutter 播放器、media_kit、libmpv、nodejs spider 爬虫源、自签名 IPA、iOS 侧载、macOS DMG。
+
+`tvbox` `android-tv` `iptv-player` `m3u` `flutter` `media-kit` `libmpv` `ipa` `apk` `dmg` `self-signed-ipa` `shell-player`
 
 ## 免责声明
 
