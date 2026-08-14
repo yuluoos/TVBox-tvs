@@ -1,5 +1,11 @@
 # TVS — 聚合播放器
 
+[![Release](https://img.shields.io/github/v/release/yuluoos/TVBox-tvs?label=release&color=blue)](https://github.com/yuluoos/TVBox-tvs/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/yuluoos/TVBox-tvs/total?label=downloads&color=success)](https://github.com/yuluoos/TVBox-tvs/releases)
+[![Platform](https://img.shields.io/badge/platform-Android%20TV%20%7C%20Android%20%7C%20iOS%20%7C%20macOS-lightgrey)](#下载最新版-109)
+[![Stars](https://img.shields.io/github/stars/yuluoos/TVBox-tvs?style=flat&color=yellow)](https://github.com/yuluoos/TVBox-tvs/stargazers)
+[![License](https://img.shields.io/github/license/yuluoos/TVBox-tvs?color=informational)](LICENSE)
+
 > TVBox 类空壳聚合播放器 · Flutter 跨平台 · Android TV / 电视盒子 / iOS / iPadOS / macOS · 提供 APK / IPA / DMG 直接下载
 >
 > A TVBox-style shell media player built with Flutter for Android TV, iOS and macOS — no built-in content, bring your own subscription and live sources.
@@ -8,11 +14,11 @@
 
 | 平台 | 下载 | 说明 |
 | --- | --- | --- |
-| Android / Android TV / 电视盒子 | [arm64-v8a APK](releases/1.0.9/tvs-1.0.9-arm64-v8a.apk) · [armeabi-v7a](releases/1.0.9/tvs-1.0.9-armeabi-v7a.apk) · [x86_64](releases/1.0.9/tvs-1.0.9-x86_64.apk) | 绝大多数设备选 arm64-v8a |
-| iOS / iPadOS | [自签名 IPA](releases/1.0.9/tvs-selfsign-1.0.9.ipa) | 需自行签名侧载（如爱思、巨魔、AltStore、自签 API） |
-| macOS（Apple Silicon） | [DMG](releases/1.0.9/tvs-1.0.9.dmg) | 首次打开需在「隐私与安全性」中放行 |
+| Android / Android TV / 电视盒子 | [arm64-v8a APK](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.0.9/tvs-1.0.9-arm64-v8a.apk) · [armeabi-v7a](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.0.9/tvs-1.0.9-armeabi-v7a.apk) · [x86_64](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.0.9/tvs-1.0.9-x86_64.apk) | 绝大多数设备选 arm64-v8a |
+| iOS / iPadOS | [自签名 IPA](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.0.9/tvs-selfsign-1.0.9.ipa) | 需自行签名侧载（如爱思、巨魔、AltStore、自签 API） |
+| macOS（Apple Silicon） | [DMG](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.0.9/tvs-1.0.9.dmg) | 首次打开需在「隐私与安全性」中放行 |
 
-历史版本与 SHA-256 校验值见文末[版本记录](#版本记录)。
+全部版本见 [Releases 页面](https://github.com/yuluoos/TVBox-tvs/releases)；历史版本与 SHA-256 校验值见文末[版本记录](#版本记录)。
 
 ---
 
@@ -96,6 +102,7 @@ TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应
 
 - IPA 为自签名（selfsign）Release 构建
 - 每个版本对应一个 git tag（如 `v1.0.4`）
+- 自 1.0.9 起产物同时发布到 [GitHub Releases](https://github.com/yuluoos/TVBox-tvs/releases)，推荐从 Releases 下载；`releases/` 目录保留是为了兼容 1.0.9 及更早版本内置的更新检查
 
 ### Android（APK）
 
