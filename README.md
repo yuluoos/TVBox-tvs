@@ -149,6 +149,8 @@ TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应
 - 修复详情页剧情简介过长时无法滚动查看
 - 更新检查与版本信息拆分，设置页版本信息与检查更新的展示更清晰
 
+> 至此核心功能与稳定性已基本达到预期，后续以维护为主，不会再频繁发版；遇到问题或有功能建议，欢迎到 [Issues](https://github.com/yuluoos/TVBox-tvs/issues) / [Discussions](https://github.com/yuluoos/TVBox-tvs/discussions) 反馈。
+
 ### 1.1.3 更新内容
 
 - **新增弹幕搜索与剧集匹配**：播放器弹幕面板支持按片名搜索弹幕库，并手动选择匹配的剧集加载弹幕
