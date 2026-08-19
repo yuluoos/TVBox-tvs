@@ -47,7 +47,6 @@ def build_block(version, files):
             '    <h3>iOS / iPadOS</h3>\n'
             '    <p>自签名 IPA，需自行签名侧载（爱思、巨魔、AltStore、自签 API）</p>\n'
             f'    <a class="btn" href="{download_url(version, files["ipa"]["name"])}">下载 IPA</a>\n'
-            '    <div class="alts"><a href="#selfsign">用 GitHub Actions 自助签名 →</a></div>\n'
             '  </div>'
         )
 

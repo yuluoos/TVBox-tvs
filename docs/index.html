@@ -90,7 +90,6 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
     <h3>iOS / iPadOS</h3>
     <p>自签名 IPA，需自行签名侧载（爱思、巨魔、AltStore、自签 API）</p>
     <a class="btn" href="https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.4/tvs-selfsign-1.1.4.ipa">下载 IPA</a>
-    <div class="alts"><a href="#selfsign">用 GitHub Actions 自助签名 →</a></div>
   </div>
   <div class="card">
     <h3>macOS（Apple Silicon）</h3>
@@ -136,23 +135,11 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
   </div>
 </div>
 
-<h2 id="selfsign">自助自签 IPA</h2>
-<p>官方 IPA 是自签名构建，直接安装需要你自己的证书。除了爱思 / AltStore / 巨魔，你也可以
-  <strong>Fork 本仓库</strong>，用 GitHub Actions 在云端用自己的证书签名，全过程不需要 Mac：</p>
-<ol>
-  <li>Fork <a href="https://github.com/yuluoos/TVBox-tvs">yuluoos/TVBox-tvs</a> 到你自己的账号</li>
-  <li>把 <code>.p12</code> 证书和 <code>.mobileprovision</code> 描述文件分别做 base64，存进
-    Settings → Secrets and variables → Actions：<code>P12_BASE64</code>、<code>P12_PASSWORD</code>、<code>MOBILEPROVISION_BASE64</code></li>
-  <li>Actions 页面手动运行「自签 IPA / Self-sign IPA」，跑完在 Artifacts 里下载签好的 IPA</li>
-</ol>
-<p class="alts">证书与密码只存在于你自己 fork 的 Secrets 中，本仓库无法读取。
-  <a href="https://github.com/yuluoos/TVBox-tvs#自助自签-ipa">详细说明 →</a></p>
-
 <h2>常见问题</h2>
 <h3>安装后为什么什么内容都没有？</h3>
 <p>这是空壳设计。首次启动没有任何内容，需要在「订阅」页导入羊壳（PeekPili）格式的订阅配置；站点、分类、搜索结果、直播频道全部来自你导入的源。</p>
 <h3>iOS 怎么安装这个 IPA？</h3>
-<p>IPA 为自签名构建，需要自行签名后侧载。常见方式：爱思助手、AltStore、巨魔（TrollStore）、各类自签 API，或用上面的 <a href="#selfsign">GitHub Actions 自助签名</a>。</p>
+<p>IPA 为自签名构建，需要自行签名后侧载。常见方式：爱思助手、AltStore、巨魔（TrollStore）、各类自签 API。</p>
 <h3>macOS 打开提示「已损坏」或被拦截？</h3>
 <p>应用为 ad-hoc 自签名，会被 Gatekeeper 拦截。在「访达」中右键点击应用 → 打开，或到「系统设置 → 隐私与安全性」中允许。</p>
 <h3>Intel Mac 能用吗？</h3>
@@ -199,7 +186,7 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
   "@type": "FAQPage",
   "mainEntity": [
     {"@type":"Question","name":"安装后为什么什么内容都没有？","acceptedAnswer":{"@type":"Answer","text":"这是空壳设计。首次启动没有任何内容，需要在「订阅」页导入羊壳（PeekPili）格式的订阅配置；站点、分类、搜索结果、直播频道全部来自你导入的源。"}},
-    {"@type":"Question","name":"iOS 怎么安装这个 IPA？","acceptedAnswer":{"@type":"Answer","text":"IPA 为自签名构建，需要自行签名后侧载。常见方式：爱思助手、AltStore、巨魔（TrollStore）、各类自签 API，或 Fork 仓库用 GitHub Actions 自助签名。"}},
+    {"@type":"Question","name":"iOS 怎么安装这个 IPA？","acceptedAnswer":{"@type":"Answer","text":"IPA 为自签名构建，需要自行签名后侧载。常见方式：爱思助手、AltStore、巨魔（TrollStore）、各类自签 API。"}},
     {"@type":"Question","name":"macOS 打开提示已损坏或被拦截？","acceptedAnswer":{"@type":"Answer","text":"应用为 ad-hoc 自签名，会被 Gatekeeper 拦截。在访达中右键点击应用 → 打开，或到系统设置 → 隐私与安全性中允许。"}},
     {"@type":"Question","name":"电视盒子该下哪个 APK？","acceptedAnswer":{"@type":"Answer","text":"绝大多数电视盒子和 Android TV 设备选 arm64-v8a；老旧 32 位设备选 armeabi-v7a；模拟器或少数 x86 盒子选 x86_64。"}},
     {"@type":"Question","name":"支持 TVBox 的接口配置吗？","acceptedAnswer":{"@type":"Answer","text":"不支持。TVS 只解析羊壳（PeekPili）格式的订阅，TVBox 自身的接口格式不保证可用。直播源则支持通用的 M3U / TXT / JSON。"}}
