@@ -1,4 +1,4 @@
-# TVS — 聚合播放器
+# TVS — TVBox 类空壳聚合播放器（Android TV / iOS / macOS）
 
 [![Release](https://img.shields.io/github/v/release/yuluoos/TVBox-tvs?label=release&color=blue)](https://github.com/yuluoos/TVBox-tvs/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/yuluoos/TVBox-tvs/total?label=downloads&color=success)](https://github.com/yuluoos/TVBox-tvs/releases)
@@ -19,6 +19,7 @@
 | macOS（Apple Silicon） | [DMG](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.4/tvs-1.1.4.dmg) | 首次打开需在「隐私与安全性」中放行 |
 
 全部版本见 [Releases 页面](https://github.com/yuluoos/TVBox-tvs/releases)；历史版本与 SHA-256 校验值见文末[版本记录](#版本记录)。
+也可以访问下载页：**<https://yuluoos.github.io/TVBox-tvs/>**
 
 ---
 
@@ -29,6 +30,33 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android / macOS）聚合�
 有功能建议或使用中遇到问题，欢迎通过 [Issues](https://github.com/yuluoos/TVBox-tvs/issues) 反馈问题，或到 [Discussions](https://github.com/yuluoos/TVBox-tvs/discussions) 提想法与交流使用经验。
 
 ---
+
+## 自助自签 IPA
+
+仓库提供的 IPA 是自签名构建，安装到 iOS 设备需要用你自己的证书重新签名。除了爱思助手 / AltStore / 巨魔，你也可以 **Fork 本仓库**，用 GitHub Actions 在云端签名，全程不需要 Mac：
+
+1. Fork 本仓库到你自己的账号。
+2. 把证书和描述文件转成 base64：
+   ```bash
+   base64 -i 证书.p12 | pbcopy            # macOS
+   base64 -w0 证书.p12                     # Linux
+   ```
+3. 在你 fork 的仓库里打开 **Settings → Secrets and variables → Actions**，新建：
+
+   | Secret | 内容 | 必填 |
+   | --- | --- | --- |
+   | `P12_BASE64` | `.p12` 证书的 base64 文本 | 是 |
+   | `MOBILEPROVISION_BASE64` | `.mobileprovision` 描述文件的 base64 文本 | 是 |
+   | `P12_PASSWORD` | 导出 `.p12` 时设的密码（没有则不填） | 否 |
+
+4. 到 **Actions → 自签 IPA / Self-sign IPA → Run workflow** 手动运行。版本号留空表示签最新版；Bundle ID 留空会自动从描述文件推导（通配符描述文件则保持原样）。
+5. 跑完在该次运行的 **Artifacts** 里下载 `tvs-signed-ipa`，解压得到签好的 IPA，用爱思 / AltStore / iTunes 装到设备。
+
+说明：
+
+- 证书和密码只存在于**你自己 fork 的 Secrets** 里，本仓库和其他人都读不到；签名产物保留 1 天后自动删除。
+- 工作流从本仓库 Releases 拉取官方 IPA，用 [zsign](https://github.com/zhlynn/zsign)（版本与 SHA-256 均已锁定）完成签名。
+- 免费 Apple 个人开发者证书签出的应用有效期 7 天，到期后重跑一次工作流重新签名即可。
 
 ## 空壳设计说明
 

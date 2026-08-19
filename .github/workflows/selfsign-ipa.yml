@@ -1,0 +1,142 @@
+name: 自签 IPA / Self-sign IPA
+
+# Fork 本仓库后即可使用：在你自己的 fork 里配置证书 Secrets，手动触发本工作流，
+# 产出一个用**你自己的证书**签名的 IPA。证书与密码只存在于你自己的仓库 Secrets 里。
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '要签名的版本号，如 1.1.4；留空表示最新版'
+        required: false
+        default: ''
+      bundle_id:
+        description: 'Bundle ID；留空则自动从描述文件推导（通配符描述文件保持原样）'
+        required: false
+        default: ''
+      bundle_name:
+        description: '应用显示名；留空保持原样'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+env:
+  UPSTREAM: yuluoos/TVBox-tvs
+  ZSIGN_VERSION: v1.1.1
+  ZSIGN_SHA256: 65873b256b8902715cc81c8c467e9dddb315a2b484c6d0f5fb2031bad819d8ba
+
+jobs:
+  sign:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检查 Secrets 是否已配置
+        env:
+          P12_BASE64: ${{ secrets.P12_BASE64 }}
+          MOBILEPROVISION_BASE64: ${{ secrets.MOBILEPROVISION_BASE64 }}
+        run: |
+          missing=0
+          if [ -z "$P12_BASE64" ]; then echo '::error::缺少 Secret：P12_BASE64'; missing=1; fi
+          if [ -z "$MOBILEPROVISION_BASE64" ]; then echo '::error::缺少 Secret：MOBILEPROVISION_BASE64'; missing=1; fi
+          if [ "$missing" = 1 ]; then
+            echo '请到你 fork 的仓库 → Settings → Secrets and variables → Actions 添加，详见 README「自助自签 IPA」。' >&2
+            exit 1
+          fi
+
+      - name: 下载官方 IPA
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION_INPUT: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          mkdir -p work
+          if [ -n "$VERSION_INPUT" ]; then
+            TAG="v${VERSION_INPUT#v}"
+          else
+            TAG=$(gh release view --repo "$UPSTREAM" --json tagName --jq .tagName)
+          fi
+          echo "使用版本：$TAG"
+          gh release download "$TAG" --repo "$UPSTREAM" --pattern '*.ipa' --dir work
+          shopt -s nullglob
+          ipas=(work/*.ipa)
+          if [ ${#ipas[@]} -eq 0 ]; then echo "::error::$TAG 没有 IPA 产物"; exit 1; fi
+          {
+            echo "SRC_IPA=${ipas[0]}"
+            echo "TAG=$TAG"
+          } >> "$GITHUB_ENV"
+
+      - name: 准备 zsign
+        run: |
+          set -euo pipefail
+          curl -fsSL "https://github.com/zhlynn/zsign/releases/download/${ZSIGN_VERSION}/zsign-linux-x86_64.tar.gz" -o zsign.tar.gz
+          echo "${ZSIGN_SHA256}  zsign.tar.gz" | sha256sum -c -
+          tar xzf zsign.tar.gz
+          chmod +x zsign
+
+      - name: 解出证书并推导 Bundle ID
+        env:
+          P12_BASE64: ${{ secrets.P12_BASE64 }}
+          MOBILEPROVISION_BASE64: ${{ secrets.MOBILEPROVISION_BASE64 }}
+          BUNDLE_ID_INPUT: ${{ inputs.bundle_id }}
+        run: |
+          set -euo pipefail
+          umask 077
+          printf '%s' "$P12_BASE64" | base64 -d > work/cert.p12
+          printf '%s' "$MOBILEPROVISION_BASE64" | base64 -d > work/profile.mobileprovision
+          if [ ! -s work/cert.p12 ]; then
+            echo '::error::P12_BASE64 解码为空，请确认存的是 base64 文本而不是原始文件'; exit 1
+          fi
+          if [ ! -s work/profile.mobileprovision ]; then
+            echo '::error::MOBILEPROVISION_BASE64 解码为空'; exit 1
+          fi
+
+          openssl smime -inform der -verify -noverify \
+            -in work/profile.mobileprovision -out work/profile.plist 2>/dev/null
+
+          python3 - "${BUNDLE_ID_INPUT}" <<'PY' > work/derived.env
+          import plistlib, sys
+          override = sys.argv[1]
+          with open('work/profile.plist', 'rb') as fh:
+              prof = plistlib.load(fh)
+          print(f"到期时间：{prof.get('ExpirationDate')}", file=sys.stderr)
+          print(f"描述文件：{prof.get('Name')}", file=sys.stderr)
+          if override:
+              print(f'BUNDLE_ID={override}')
+              print(f'使用手填的 Bundle ID：{override}', file=sys.stderr)
+          else:
+              app_id = prof.get('Entitlements', {}).get('application-identifier', '')
+              bundle = app_id.split('.', 1)[1] if '.' in app_id else ''
+              if bundle and not bundle.endswith('*'):
+                  print(f'BUNDLE_ID={bundle}')
+                  print(f'从描述文件推导出 Bundle ID：{bundle}', file=sys.stderr)
+              else:
+                  print('通配符或无法识别的描述文件，保持 IPA 原有 Bundle ID', file=sys.stderr)
+          PY
+          cat work/derived.env >> "$GITHUB_ENV"
+
+      - name: 签名
+        env:
+          P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
+          BUNDLE_NAME: ${{ inputs.bundle_name }}
+        run: |
+          set -euo pipefail
+          args=(-k work/cert.p12 -m work/profile.mobileprovision -z 9)
+          if [ -n "${P12_PASSWORD:-}" ]; then args+=(-p "$P12_PASSWORD"); fi
+          if [ -n "${BUNDLE_ID:-}" ]; then args+=(-b "$BUNDLE_ID"); fi
+          if [ -n "${BUNDLE_NAME:-}" ]; then args+=(-n "$BUNDLE_NAME"); fi
+          out="tvs-${TAG#v}-signed.ipa"
+          ./zsign "${args[@]}" -o "$out" "$SRC_IPA"
+          ls -lh "$out"
+          echo "OUT_IPA=$out" >> "$GITHUB_ENV"
+
+      - name: 清理证书
+        if: always()
+        run: rm -f work/cert.p12 work/profile.mobileprovision work/profile.plist
+
+      - name: 上传签名后的 IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: tvs-signed-ipa
+          path: ${{ env.OUT_IPA }}
+          retention-days: 1
+          if-no-files-found: error

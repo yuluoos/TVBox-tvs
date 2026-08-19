@@ -104,6 +104,10 @@ python3 "$ROOT/scripts/update_readme.py" \
   --version "$VERSION" --date "$DATE" --build "${BUILD_NUMBER:-1}" \
   --notes-file "$NOTES" --artifacts "$ARTIFACTS"
 
+# ---------- 更新 GitHub Pages 落地页 ----------
+python3 "$ROOT/scripts/update_site.py" \
+  --version "$VERSION" --artifacts "$ARTIFACTS" --site "$ROOT/docs/index.html"
+
 # ---------- Release 正文 ----------
 RELEASE_NOTES="$STAGE/release-notes.md"
 python3 - "$NOTES" "$ARTIFACTS" "$RELEASE_NOTES" <<'PY'
@@ -127,13 +131,13 @@ io.open(sys.argv[3], 'w', encoding='utf-8').write(notes + '\n' + '\n'.join(rows)
 PY
 
 if [[ $DRY_RUN -eq 1 ]]; then
-  echo "==> dry-run：产物在 ${STAGE}，README 已改但未提交，Release 未创建"
+  echo "==> dry-run：产物在 ${STAGE}，README 与 docs/index.html 已改但未提交，Release 未创建"
   exit 0
 fi
 
 # ---------- 提交 README ----------
-echo "==> 提交并推送 README"
-git add README.md
+echo "==> 提交并推送 README 与落地页"
+git add README.md docs/index.html
 git commit -m "Release tvs $VERSION"
 git push origin main
 
