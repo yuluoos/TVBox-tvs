@@ -21,6 +21,13 @@
 全部版本见 [Releases 页面](https://github.com/yuluoos/TVBox-tvs/releases)；历史版本与 SHA-256 校验值见文末[版本记录](#版本记录)。
 也可以访问下载页：**<https://yuluoos.github.io/TVBox-tvs/>**
 
+安装与配置指南（下载页子页面）：
+[iOS / iPadOS 侧载 IPA](https://yuluoos.github.io/TVBox-tvs/ios-ipa.html) ·
+[电视盒子 / Android TV 装 APK](https://yuluoos.github.io/TVBox-tvs/android-tv.html) ·
+[macOS 安装 DMG](https://yuluoos.github.io/TVBox-tvs/macos.html) ·
+[羊壳（PeekPili）订阅导入](https://yuluoos.github.io/TVBox-tvs/peekpili.html) ·
+[直播源导入（M3U / TXT / JSON）](https://yuluoos.github.io/TVBox-tvs/live.html)
+
 ---
 
 TVS 是一款基于 Flutter 开发的跨平台（iOS / Android / macOS）聚合播放器，采用羊壳（PeekPili）一类的"空壳"设计：**应用本体不内置任何内容、频道或数据源**，安装后是一个空壳，所有内容均由用户自行导入订阅配置和直播源后才可用。**订阅仅适用于羊壳（PeekPili）格式**。应用只提供解析、聚合与播放能力，内容的可用性由用户导入的源决定。

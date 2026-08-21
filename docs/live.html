@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TVS 直播源怎么导入？M3U / TXT（#genre#）/ JSON 三种格式说明</title>
+<meta name="description" content="TVS（TVBox-tvs）的直播频道需自行导入直播源，自动识别 M3U / M3U8、TXT（#genre# 分组）与 JSON 三种通用格式。本文给出三种格式的写法示例，说明频道分组、台标显示与独立直播播放器，以及频道播放失败、台标不显示的排查方法。">
+<meta name="keywords" content="直播源导入,M3U 播放器,m3u8,TXT genre 直播源,JSON 直播源,IPTV 播放器,直播源 格式,频道分组,台标 tvg-logo,libmpv,media_kit,TVBox-tvs">
+<link rel="canonical" href="https://yuluoos.github.io/TVBox-tvs/live.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="直播源导入：M3U / TXT / JSON 三种格式｜TVS（TVBox-tvs）">
+<meta property="og:description" content="TVS（TVBox-tvs）的直播频道需自行导入直播源，自动识别 M3U / M3U8、TXT（#genre# 分组）与 JSON 三种通用格式。本文给出三种格式的写法示例，说明频道分组、台标显示与独立直播播放器，以及频道播放失败、台标不显示的排查方法。">
+<meta property="og:url" content="https://yuluoos.github.io/TVBox-tvs/live.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<p class="crumb"><a href="./">TVS（TVBox-tvs）下载页</a> › 直播源导入：M3U / TXT / JSON 三种格式</p>
+
+<header style="padding:14px 0 32px">
+  <h1>直播源导入：M3U / TXT / JSON 三种格式</h1>
+  <p class="lead">直播频道和点播订阅是分开的两套。直播源用通用格式，TVS 会自动识别，下面是三种格式的写法和播放失败的排查表。</p>
+</header>
+
+<p>TVS 的直播和点播是两套独立的东西：点播内容来自<a href="peekpili.html">羊壳（PeekPili）订阅配置</a>，
+直播频道则单独导入直播源。直播源用的是<strong>通用格式</strong>，不受羊壳格式限制。</p>
+
+<h2 id="formats">支持的三种格式</h2>
+<p>TVS 会<strong>自动识别</strong>导入的直播源属于哪种格式，你不需要手动指定。</p>
+
+<h3>1. M3U / M3U8 播放列表</h3>
+<p>最常见的 IPTV 格式，每个频道由一行 <code>#EXTINF</code> 元信息加一行播放地址组成。
+<code>group-title</code> 决定分组，<code>tvg-logo</code> 决定台标：</p>
+<p><code>#EXTM3U</code><br>
+<code>#EXTINF:-1 tvg-name="频道名" tvg-logo="https://.../logo.png" group-title="央视",频道名</code><br>
+<code>http://example.com/stream.m3u8</code></p>
+
+<h3>2. TXT（#genre# 分组格式）</h3>
+<p>国内直播源常见的纯文本格式，用 <code>#genre#</code> 标记分组，其余每行是「频道名,播放地址」：</p>
+<p><code>央视,#genre#</code><br>
+<code>CCTV-1,http://example.com/cctv1.m3u8</code><br>
+<code>CCTV-2,http://example.com/cctv2.m3u8</code><br>
+<code>卫视,#genre#</code><br>
+<code>湖南卫视,http://example.com/hunan.m3u8</code></p>
+
+<h3>3. JSON</h3>
+<p>结构化的 JSON 直播源同样支持，导入后一样会解析出分组与频道列表。</p>
+
+<h2>导入后能用到什么</h2>
+<ul>
+  <li><strong>频道分组浏览</strong>：按源里的分组（央视 / 卫视 / 地方等）分类展示。</li>
+  <li><strong>台标显示</strong>：源里带了 logo 地址就会显示台标，图片走内置本地代理处理防盗链。</li>
+  <li><strong>独立直播播放器</strong>：直播有自己的播放页面，交互与点播播放器分开，遥控器 D-pad 可直接操作。</li>
+</ul>
+
+<h2>播放失败怎么排查</h2>
+<div class="tablewrap">
+<table>
+<thead><tr><th>现象</th><th>原因与处理</th></tr></thead>
+<tbody>
+<tr><td>整个源导入后没有任何频道</td><td>格式不在 M3U / TXT / JSON 三种之内，或文件内容为空 / 地址已失效。换个源试试。</td></tr>
+<tr><td>频道列表有，但全部播不了</td><td>多为网络问题：源需要特定网络环境、被限流，或组播地址在你的网络里不可达。</td></tr>
+<tr><td>个别频道卡顿或转圈</td><td>单个流的服务端问题，和播放器无关。同名频道换一条线路。</td></tr>
+<tr><td>台标不显示</td><td>源里没写 tvg-logo，或 logo 地址已失效。</td></tr>
+<tr><td>分组全挤在一起</td><td>源本身没写 group-title / #genre# 分组信息。</td></tr>
+</tbody>
+</table>
+</div>
+<p>TVS 内置本地 HTTP 代理，负责图片防盗链代理、请求头转发和 m3u8 过滤；
+资源代理会手动跟随重定向并在每一跳保留自定义请求头（User-Agent 等），这修复了部分防盗链站点播放失败的问题（1.1.2）。</p>
+
+<h2>播放器能力</h2>
+<p>直播和点播共用同一个播放内核：<strong>media_kit（libmpv）</strong>，支持主流格式与 m3u8 流。
+本地代理层还会对 m3u8 分片做广告过滤处理。</p>
+
+<div class="note">
+  <strong>本项目不提供任何直播源。</strong>TVS 只负责解析和播放你自己导入的源，
+  不提供、不推荐、不分发任何频道地址或源列表。请勿在 Issues / Discussions 中索取或分享内容源。
+</div>
+
+<h2>还没装 TVS？</h2>
+<p>到 <a href="https://github.com/yuluoos/TVBox-tvs/releases/latest">Releases 下载最新版</a>，或看对应平台的安装说明：
+<a href="ios-ipa.html">iOS 侧载</a> · <a href="android-tv.html">电视盒子 / Android TV</a> · <a href="macos.html">macOS</a>。</p>
+
+<div class="related">
+  <h2>相关说明</h2>
+  <ul>
+    <li><a href="ios-ipa.html">iOS 侧载 IPA</a></li>
+    <li><a href="android-tv.html">电视盒子 / Android TV</a></li>
+    <li><a href="macos.html">macOS DMG</a></li>
+    <li><a href="peekpili.html">羊壳订阅导入</a></li>
+    <li><a href="./">返回下载页（APK / IPA / DMG 全部下载）</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p><strong>免责声明：</strong>TVS 为空壳聚合播放器，不内置任何内容与数据源，仅供个人学习与技术研究使用，请在遵守当地法律法规的前提下使用。</p>
+  <p>项目源：<a href="https://github.com/yuluoos/TVBox-tvs">github.com/yuluoos/TVBox-tvs</a> · MIT License · <a href="https://github.com/yuluoos/TVBox-tvs/issues">Issues</a> · <a href="https://github.com/yuluoos/TVBox-tvs/discussions">Discussions</a></p>
+</footer>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "TVS 下载页",
+      "item": "https://yuluoos.github.io/TVBox-tvs/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "直播源导入：M3U / TXT / JSON 三种格式",
+      "item": "https://yuluoos.github.io/TVBox-tvs/live.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "TVS 支持哪些直播源格式？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "支持三种通用格式并自动识别：M3U / M3U8 播放列表、TXT（用 #genre# 标记分组的纯文本格式）、以及 JSON 直播源。导入时不需要手动指定格式。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "直播源和羊壳订阅是一回事吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不是。点播内容来自羊壳（PeekPili）格式的订阅配置，直播频道则单独导入直播源，用的是 M3U / TXT / JSON 通用格式，不受羊壳格式限制。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "TXT 格式的直播源怎么写？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "每个分组用一行「分组名,#genre#」标记，后面每行是「频道名,播放地址」。例如先写 央视,#genre# 再依次写 CCTV-1,http://... 这样的频道行。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "频道台标为什么不显示？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "通常是源里没有写 tvg-logo 字段，或者 logo 图片地址已经失效。TVS 会通过内置本地代理加载台标以处理防盗链。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "频道列表能加载但所有频道都播不了，是什么原因？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "多数是网络层面的问题：源要求特定网络环境、服务端限流，或组播地址在当前网络不可达。个别频道卡顿则是单条流的服务端问题，可以换一条线路。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "TVS 提供直播源吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不提供。TVS 只负责解析和播放用户自行导入的源，不提供、不推荐、不分发任何频道地址或源列表。"
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>

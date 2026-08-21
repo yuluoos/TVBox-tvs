@@ -3,68 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TVS — TVBox 类空壳聚合播放器 | Android TV / iOS / macOS 下载</title>
+<title>TVBox 类空壳聚合播放器 TVS（TVBox-tvs）｜Android TV 电视盒子 / iOS IPA / macOS 下载</title>
 <meta name="description" content="TVS 是基于 Flutter 的 TVBox 类空壳聚合播放器，支持 Android TV、电视盒子、iOS / iPadOS 与 macOS。提供 APK / 自签名 IPA / DMG 直接下载，支持羊壳（PeekPili）订阅与 M3U / TXT / JSON 直播源，遥控器 D-pad 适配。应用不内置任何内容源。">
-<meta name="keywords" content="TVBox,TVBox iOS,TVBox macOS,TVBox IPA,空壳播放器,聚合播放器,Android TV 播放器,电视盒子,羊壳,PeekPili,IPTV 播放器,M3U,Flutter 播放器">
+<meta name="keywords" content="TVBox-tvs,TVS 播放器,TVBox,TVBox iOS,TVBox macOS,TVBox IPA,空壳播放器,聚合播放器,Android TV 播放器,电视盒子,羊壳,PeekPili,IPTV 播放器,M3U,Flutter 播放器">
 <link rel="canonical" href="https://yuluoos.github.io/TVBox-tvs/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="TVS — TVBox 类空壳聚合播放器（Android TV / iOS / macOS）">
+<meta property="og:title" content="TVS（TVBox-tvs）— TVBox 类空壳聚合播放器（Android TV / iOS / macOS）">
 <meta property="og:description" content="Flutter 跨平台 TVBox 类空壳聚合播放器，提供 APK / IPA / DMG 下载，支持羊壳（PeekPili）订阅与 M3U 直播源。">
 <meta property="og:url" content="https://yuluoos.github.io/TVBox-tvs/">
 <meta name="twitter:card" content="summary">
-<style>
-:root{
-  --bg:#ffffff; --fg:#16181d; --muted:#5b6472; --line:#e3e6eb;
-  --card:#f7f8fa; --accent:#2563eb; --accent-fg:#ffffff; --code:#eef0f4;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0f1115; --fg:#e8eaed; --muted:#9aa3b2; --line:#262a33;
-  --card:#171a21; --accent:#5b8cff; --accent-fg:#0f1115; --code:#1c2029;
-}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);
-  font:16px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
-  -webkit-text-size-adjust:100%}
-.wrap{max-width:860px;margin:0 auto;padding:0 20px 72px}
-header{padding:56px 0 32px;border-bottom:1px solid var(--line)}
-h1{font-size:clamp(26px,5vw,38px);line-height:1.3;margin:0 0 14px;letter-spacing:-.01em}
-.sub{color:var(--muted);font-size:17px;margin:0 0 8px}
-.en{color:var(--muted);font-size:14px;margin:0}
-h2{font-size:22px;margin:44px 0 14px;letter-spacing:-.01em}
-h3{font-size:17px;margin:26px 0 8px}
-p,li{color:var(--fg)}
-a{color:var(--accent)}
-.badges{margin:20px 0 0;display:flex;gap:8px;flex-wrap:wrap}
-.badges img{height:20px}
-.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:18px 0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
-.card h3{margin:0 0 6px;font-size:16px}
-.card p{margin:0 0 14px;color:var(--muted);font-size:14px}
-.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);text-decoration:none;
-  padding:9px 16px;border-radius:8px;font-size:14px;font-weight:600}
-.btn.alt{background:transparent;color:var(--accent);border:1px solid var(--accent);margin-left:8px}
-.alts{margin-top:10px;font-size:13px;color:var(--muted)}
-.alts a{margin-right:12px}
-.note{background:var(--card);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
-  padding:14px 16px;margin:20px 0;font-size:14.5px;color:var(--muted)}
-.note strong{color:var(--fg)}
-ul{padding-left:22px}
-code{background:var(--code);padding:2px 6px;border-radius:5px;font-size:13.5px;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-.tablewrap{overflow-x:auto;margin:16px 0}
-table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:520px}
-th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
-th{color:var(--muted);font-weight:600;font-size:13px}
-footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
-  color:var(--muted);font-size:13.5px}
-.kw{color:var(--muted);font-size:13px;line-height:1.9}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <h1>TVS — TVBox 类空壳聚合播放器</h1>
+  <h1>TVS（TVBox-tvs）— TVBox 类空壳聚合播放器</h1>
   <p class="sub">Flutter 跨平台 · Android TV / 电视盒子 / iOS / iPadOS / macOS · 提供 APK、自签名 IPA、DMG 直接下载</p>
   <p class="en">A TVBox-style shell media player built with Flutter for Android TV, iOS and macOS — no built-in content, bring your own subscription and live sources.</p>
   <div class="badges">
@@ -102,6 +56,30 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
   <a href="https://github.com/yuluoos/TVBox-tvs#版本记录">版本记录</a>。</p>
 <!-- END:downloads -->
 
+<h2 id="guides">安装与配置指南</h2>
+<div class="grid">
+  <div class="card">
+    <h3><a href="ios-ipa.html">iOS / iPadOS 侧载 IPA</a></h3>
+    <p>爱思助手、AltStore、巨魔商店、自签 API 四种方式；7 天签名过期与「未受信任的开发者」怎么处理。</p>
+  </div>
+  <div class="card">
+    <h3><a href="android-tv.html">电视盒子 / Android TV 装 APK</a></h3>
+    <p>arm64-v8a / armeabi-v7a / x86_64 该下哪个；盒子没有浏览器时用 U 盘或 ADB 侧载；未知来源权限。</p>
+  </div>
+  <div class="card">
+    <h3><a href="macos.html">macOS 安装 DMG</a></h3>
+    <p>Gatekeeper 提示「已损坏」的三种解法；为什么只有 Apple Silicon 版本。</p>
+  </div>
+  <div class="card">
+    <h3><a href="peekpili.html">导入羊壳（PeekPili）订阅</a></h3>
+    <p>空壳设计说明、订阅导入步骤、多订阅切换、nodejs spider 爬虫源；导入后没内容的排查顺序。</p>
+  </div>
+  <div class="card">
+    <h3><a href="live.html">导入直播源</a></h3>
+    <p>M3U / TXT（#genre#）/ JSON 三种格式的写法示例；频道分组、台标与播放失败排查。</p>
+  </div>
+</div>
+
 <div class="note">
   <strong>这是一个「空壳」应用。</strong>安装后不内置任何内容、频道或数据源，需要你自行导入订阅配置与直播源才能使用。
   订阅<strong>仅支持羊壳（PeekPili）格式</strong>。本项目不提供、不推荐、不分发任何内容源。
@@ -137,17 +115,17 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
 
 <h2>常见问题</h2>
 <h3>安装后为什么什么内容都没有？</h3>
-<p>这是空壳设计。首次启动没有任何内容，需要在「订阅」页导入羊壳（PeekPili）格式的订阅配置；站点、分类、搜索结果、直播频道全部来自你导入的源。</p>
+<p>这是空壳设计。首次启动没有任何内容，需要在「订阅」页导入羊壳（PeekPili）格式的订阅配置；站点、分类、搜索结果、直播频道全部来自你导入的源。详见 <a href="peekpili.html">羊壳订阅导入说明</a>。</p>
 <h3>iOS 怎么安装这个 IPA？</h3>
-<p>IPA 为自签名构建，需要自行签名后侧载。常见方式：爱思助手、AltStore、巨魔（TrollStore）、各类自签 API。</p>
+<p>IPA 为自签名构建，需要自行签名后侧载。常见方式：爱思助手、AltStore、巨魔（TrollStore）、各类自签 API。完整步骤与报错排查见 <a href="ios-ipa.html">iOS 侧载教程</a>。</p>
 <h3>macOS 打开提示「已损坏」或被拦截？</h3>
-<p>应用为 ad-hoc 自签名，会被 Gatekeeper 拦截。在「访达」中右键点击应用 → 打开，或到「系统设置 → 隐私与安全性」中允许。</p>
+<p>应用为 ad-hoc 自签名，会被 Gatekeeper 拦截。在「访达」中右键点击应用 → 打开，或到「系统设置 → 隐私与安全性」中允许。三种解法详见 <a href="macos.html">macOS 安装说明</a>。</p>
 <h3>Intel Mac 能用吗？</h3>
 <p>不能。内置的 Node 运行时上游只有 darwin-arm64 产物，因此仅提供 Apple Silicon 版本。</p>
 <h3>电视盒子该下哪个 APK？</h3>
-<p>绝大多数电视盒子和 Android TV 设备选 <code>arm64-v8a</code>；老旧 32 位设备选 <code>armeabi-v7a</code>；模拟器或少数 x86 盒子选 <code>x86_64</code>。</p>
+<p>绝大多数电视盒子和 Android TV 设备选 <code>arm64-v8a</code>；老旧 32 位设备选 <code>armeabi-v7a</code>；模拟器或少数 x86 盒子选 <code>x86_64</code>。传包方式与权限设置见 <a href="android-tv.html">电视盒子安装说明</a>。</p>
 <h3>支持 TVBox 的接口 / 配置吗？</h3>
-<p>不支持。TVS 只解析<strong>羊壳（PeekPili）格式</strong>的订阅，TVBox 自身的接口格式不保证可用。直播源则支持通用的 M3U / TXT / JSON。</p>
+<p>不支持。TVS 只解析<strong>羊壳（PeekPili）格式</strong>的订阅，TVBox 自身的接口格式不保证可用。直播源则支持通用的 M3U / TXT / JSON，格式写法见 <a href="live.html">直播源导入说明</a>。</p>
 
 <h2>技术栈</h2>
 <p>Flutter（Dart）跨平台，覆盖 iOS / iPadOS / Android / Android TV / macOS；播放内核为 libmpv（media_kit）；
@@ -170,7 +148,7 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "TVS",
-  "alternateName": "TVBox 类空壳聚合播放器",
+  "alternateName": ["TVBox-tvs", "TVS 播放器", "TVBox 类空壳聚合播放器"],
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Android, Android TV, iOS, iPadOS, macOS",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"},

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>羊壳（PeekPili）订阅怎么导入 TVS？空壳播放器配置说明</title>
+<meta name="description" content="TVS（TVBox-tvs）是空壳聚合播放器，安装后需自行导入羊壳（PeekPili）格式的订阅配置才有内容。本文说明订阅导入步骤、多订阅切换、nodejs spider 爬虫源与内嵌本地服务，以及导入后仍无内容时的排查顺序。为什么不支持 TVBox 原生接口格式。">
+<meta name="keywords" content="羊壳,PeekPili,羊壳订阅,空壳播放器,聚合播放器,订阅配置导入,nodejs spider,爬虫源,TVBox 接口,多订阅管理,聚合搜索,TVBox-tvs">
+<link rel="canonical" href="https://yuluoos.github.io/TVBox-tvs/peekpili.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="羊壳（PeekPili）订阅导入与空壳设计说明｜TVS（TVBox-tvs）">
+<meta property="og:description" content="TVS（TVBox-tvs）是空壳聚合播放器，安装后需自行导入羊壳（PeekPili）格式的订阅配置才有内容。本文说明订阅导入步骤、多订阅切换、nodejs spider 爬虫源与内嵌本地服务，以及导入后仍无内容时的排查顺序。为什么不支持 TVBox 原生接口格式。">
+<meta property="og:url" content="https://yuluoos.github.io/TVBox-tvs/peekpili.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<p class="crumb"><a href="./">TVS（TVBox-tvs）下载页</a> › 羊壳（PeekPili）订阅导入与空壳设计说明</p>
+
+<header style="padding:14px 0 32px">
+  <h1>羊壳（PeekPili）订阅导入与空壳设计说明</h1>
+  <p class="lead">TVS 装完是个空壳，内容全靠你自己导入的订阅。下面说明导入步骤、格式限制，以及导入后没内容该怎么查。</p>
+</header>
+
+<h2>什么叫「空壳」</h2>
+<p>TVS 采用羊壳（PeekPili）一类的空壳设计：<strong>应用本体不内置任何内容、站点、频道或数据源</strong>。
+装完打开是一个空的框架，首页没有分类、搜索没有结果、直播没有频道——这不是 bug，是设计如此。</p>
+<p>应用只提供三件事：解析、聚合、播放。内容从哪来、有没有、能不能播，完全取决于你自己导入的源。
+卸载掉配置，应用就回到空壳状态。<strong>本项目不提供、不推荐、不分发任何内容源。</strong></p>
+
+<h2 id="import">导入订阅配置</h2>
+<ol class="steps">
+  <li>打开 TVS，进入<strong>「订阅」页</strong>。</li>
+  <li>新增一条订阅，填入你自己的订阅配置地址或内容。</li>
+  <li>等待解析完成，把它设为当前生效的配置。</li>
+  <li>回到首页，此时应该能看到该配置下的站点、分类与推荐列表。</li>
+</ol>
+<p>支持<strong>多订阅管理</strong>：可以同时保存多条订阅配置，随时切换当前生效的那一条，不用来回删改。</p>
+
+<div class="note">
+  <strong>格式限制：TVS 只解析羊壳（PeekPili）格式的订阅。</strong>
+  TVBox 自身的接口 / 配置格式<strong>不保证可用</strong>，其他壳的专有格式同样不保证。
+  如果导入后一片空白或报解析错误，第一件要确认的事就是这个配置是不是羊壳格式。
+</div>
+
+<h2>爬虫源（spider）与内嵌本地服务</h2>
+<p>羊壳订阅里常见 nodejs 类型的 spider 站点。TVS <strong>内嵌了一个本地服务来运行爬虫源</strong>，
+完整支持 nodejs 类型的 spider 站点，不需要你额外装什么运行环境。</p>
+<p>应用在前后台切换时会自动检测并恢复这个本地服务，保证长时间使用的稳定性。
+慢速设备上偶尔会遇到本地服务冷启动失败导致站点加载异常，1.1.2 已针对这个问题做了修复。</p>
+
+<h2>导入之后能用到什么</h2>
+<ul>
+  <li><strong>首页</strong>：按当前配置的站点展示分类与推荐列表。</li>
+  <li><strong>聚合搜索</strong>：跨站点并发搜索，结果统一展示，不用一个站一个站翻。</li>
+  <li><strong>详情页</strong>：剧集解析与展示，支持多线路 / 多集数结构。</li>
+  <li><strong>解析播放</strong>：支持 parse 接口解析播放地址，自动处理嗅探与防盗链请求头。</li>
+  <li><strong>播放器</strong>：基于 media_kit（libmpv 内核），支持 m3u8 流，带片头片尾跳过、m3u8 广告过滤、断点续播、倍速与手势调节。</li>
+  <li><strong>听剧模式</strong>：独立音频播放页与全局迷你播放条，支持后台播放，可以息屏听剧。</li>
+</ul>
+
+<h2>导入后还是没内容？按这个顺序排查</h2>
+<div class="tablewrap">
+<table>
+<thead><tr><th>检查项</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>配置格式对不对</td><td>必须是<strong>羊壳（PeekPili）格式</strong>。TVBox 原生格式、其他壳的专有格式都不保证能解析。</td></tr>
+<tr><td>有没有设为当前生效</td><td>多订阅场景下，导入 ≠ 启用。要在订阅页把这一条切换为当前配置。</td></tr>
+<tr><td>订阅地址还活着吗</td><td>订阅地址失效、被墙、被限流都会导致解析空白。换个网络环境再试。</td></tr>
+<tr><td>单个站点报错</td><td>某个站点挂了不影响其他站点。切换站点看是不是普遍问题。</td></tr>
+<tr><td>爬虫源站点全部失败</td><td>可能是本地服务没起来。完全退出应用重开；老版本请先升级到最新版。</td></tr>
+</tbody>
+</table>
+</div>
+<p>确认是应用本身的 bug，欢迎到 <a href="https://github.com/yuluoos/TVBox-tvs/issues">Issues</a> 反馈（请附系统版本、应用版本与复现步骤）。
+<strong>注意：源本身的可用性问题不属于本项目范围</strong>，也请不要在 Issues 里索取或分享内容源。</p>
+
+<h2>直播源是分开的</h2>
+<p>订阅配置管的是点播内容。直播频道走另一套导入流程，支持 M3U / TXT / JSON 三种通用格式，
+见 <a href="live.html">直播源导入说明</a>。</p>
+
+<h2>还没装 TVS？</h2>
+<p>到 <a href="https://github.com/yuluoos/TVBox-tvs/releases/latest">Releases 下载最新版</a>，或看对应平台的安装说明：
+<a href="ios-ipa.html">iOS 侧载</a> · <a href="android-tv.html">电视盒子 / Android TV</a> · <a href="macos.html">macOS</a>。</p>
+
+<div class="related">
+  <h2>相关说明</h2>
+  <ul>
+    <li><a href="ios-ipa.html">iOS 侧载 IPA</a></li>
+    <li><a href="android-tv.html">电视盒子 / Android TV</a></li>
+    <li><a href="macos.html">macOS DMG</a></li>
+    <li><a href="live.html">直播源导入</a></li>
+    <li><a href="./">返回下载页（APK / IPA / DMG 全部下载）</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p><strong>免责声明：</strong>TVS 为空壳聚合播放器，不内置任何内容与数据源，仅供个人学习与技术研究使用，请在遵守当地法律法规的前提下使用。</p>
+  <p>项目源：<a href="https://github.com/yuluoos/TVBox-tvs">github.com/yuluoos/TVBox-tvs</a> · MIT License · <a href="https://github.com/yuluoos/TVBox-tvs/issues">Issues</a> · <a href="https://github.com/yuluoos/TVBox-tvs/discussions">Discussions</a></p>
+</footer>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "TVS 下载页",
+      "item": "https://yuluoos.github.io/TVBox-tvs/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "羊壳（PeekPili）订阅导入与空壳设计说明",
+      "item": "https://yuluoos.github.io/TVBox-tvs/peekpili.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "TVS 安装后为什么什么内容都没有？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "这是空壳设计，属于正常现象。应用本体不内置任何内容、站点、频道或数据源，首页、搜索结果、直播频道全部来自用户自行导入的源。需要先在「订阅」页导入羊壳（PeekPili）格式的订阅配置。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "TVS 支持 TVBox 的接口和配置吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不支持。TVS 只解析羊壳（PeekPili）格式的订阅，TVBox 自身的接口格式不保证可用，其他壳的专有格式同样不保证。直播源则支持通用的 M3U / TXT / JSON 三种格式。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "怎么在 TVS 里导入订阅配置？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "打开应用进入「订阅」页，新增一条订阅并填入配置地址或内容，等待解析完成后把它设为当前生效的配置，然后回到首页即可看到该配置下的站点与分类。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "可以同时保存多个订阅吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。TVS 支持多订阅管理，能同时保存多条订阅配置并随时切换当前生效的那一条，不需要反复删改。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "TVS 支持 nodejs 类型的 spider 爬虫源吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "支持。TVS 内嵌了本地服务来运行爬虫源，完整支持 nodejs 类型的 spider 站点，用户不需要额外安装运行环境。应用在前后台切换时会自动检测并恢复该本地服务。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "导入订阅后首页还是空的，怎么排查？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "按顺序检查：配置是不是羊壳（PeekPili）格式；有没有在订阅页把它切换为当前生效配置；订阅地址是否还有效、网络能否访问；是不是只有个别站点挂了；爬虫源站点全部失败则可能是本地服务未启动，完全退出应用重开或升级到最新版。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "TVS 提供内容源吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不提供。本项目不提供、不推荐、不分发任何内容源，仅提供解析、聚合与播放能力，仅供个人学习与技术研究使用。"
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>

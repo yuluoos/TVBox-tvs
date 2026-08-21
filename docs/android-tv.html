@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>电视盒子 / Android TV 安装 TVS APK：ABI 怎么选、U 盘与 ADB 侧载</title>
+<meta name="description" content="TVS（TVBox-tvs）Android 版按 ABI 分包。本文说明 arm64-v8a / armeabi-v7a / x86_64 三个 APK 该下哪个，电视盒子没有浏览器时如何用 U 盘、ADB 局域网或文件管理器侧载安装，如何开启未知来源，以及遥控器 D-pad 操作与应用内更新。">
+<meta name="keywords" content="电视盒子 APK,Android TV 播放器,TVBox 盒子版,ATV apk,arm64-v8a,armeabi-v7a,adb install,未知来源安装,U盘安装 APK,遥控器 D-pad,智能电视 播放器,TVBox-tvs">
+<link rel="canonical" href="https://yuluoos.github.io/TVBox-tvs/android-tv.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电视盒子 / Android TV 安装 TVS APK｜TVS（TVBox-tvs）">
+<meta property="og:description" content="TVS（TVBox-tvs）Android 版按 ABI 分包。本文说明 arm64-v8a / armeabi-v7a / x86_64 三个 APK 该下哪个，电视盒子没有浏览器时如何用 U 盘、ADB 局域网或文件管理器侧载安装，如何开启未知来源，以及遥控器 D-pad 操作与应用内更新。">
+<meta property="og:url" content="https://yuluoos.github.io/TVBox-tvs/android-tv.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<p class="crumb"><a href="./">TVS（TVBox-tvs）下载页</a> › 电视盒子 / Android TV 安装 TVS APK</p>
+
+<header style="padding:14px 0 32px">
+  <h1>电视盒子 / Android TV 安装 TVS APK</h1>
+  <p class="lead">按 CPU 架构选对 APK，再用 U 盘或 ADB 侧载进盒子。下面把 ABI 选择、几种传包方式和未知来源权限一次说清。</p>
+</header>
+
+<h2 id="abi">先选对 ABI：三个 APK 该下哪个</h2>
+<p>TVS 的 Android 包按 CPU 架构分包，下错了装不上或装上闪退。</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th>ABI</th><th>适用设备</th><th>体积</th></tr></thead>
+<tbody>
+<tr><td><code>arm64-v8a</code></td><td><strong>绝大多数情况选这个</strong>：近几年的电视盒子、Android TV、智能电视、手机</td><td>约 32 MB</td></tr>
+<tr><td><code>armeabi-v7a</code></td><td>老旧的 32 位盒子与老电视（2016 年前后的低端机型）</td><td>约 31 MB</td></tr>
+<tr><td><code>x86_64</code></td><td>安卓模拟器、少数 x86 架构的盒子 / 电视棒</td><td>约 34 MB</td></tr>
+</tbody>
+</table>
+</div>
+<p>不确定设备是什么架构，可以装个「CPU-Z」或「设备信息」类应用查看，或者直接先试 <code>arm64-v8a</code>——绝大多数设备都能装上。
+上游 nodejs-mobile 没有 32 位 x86 产物，因此不提供 <code>x86</code> 包。</p>
+<p><a class="btn" href="https://github.com/yuluoos/TVBox-tvs/releases/latest">到 Releases 下载最新 APK</a></p>
+
+<h2>系统要求与占用</h2>
+<ul>
+  <li>最低 <strong>Android 7.0（API 24）</strong>，targetSdk 36。</li>
+  <li>APK 为 Release 构建，使用调试密钥签名，<strong>仅供侧载安装</strong>，不会上架应用商店。</li>
+  <li>native 库采用压缩打包（<code>useLegacyPackaging</code>），安装时由系统解压，因此设备上会<strong>额外占用约 80 MB</strong>。存储紧张的老盒子请先留够空间。</li>
+</ul>
+
+<h2>电视盒子没有浏览器，怎么把 APK 弄进去</h2>
+
+<h3>方法一：U 盘（最通用）</h3>
+<ol class="steps">
+  <li>在电脑上把 APK 拷到 U 盘。</li>
+  <li>U 盘插进盒子，用盒子自带的文件管理器（或「ES 文件浏览器」「当贝文件管理」等）打开 U 盘。</li>
+  <li>点击 APK，按提示允许「未知来源」安装。</li>
+</ol>
+
+<h3>方法二：ADB 局域网安装（最快，适合有电脑）</h3>
+<ol class="steps">
+  <li>盒子上打开「开发者选项 → USB 调试 / 网络调试」（通常在「设置 → 关于」里连点版本号 7 次解锁开发者选项）。</li>
+  <li>记下盒子的局域网 IP（设置 → 网络里能看到）。</li>
+  <li>电脑上执行：<br>
+    <code>adb connect 盒子IP:5555</code><br>
+    <code>adb install tvs-1.x.x-arm64-v8a.apk</code></li>
+  <li>盒子屏幕上可能弹出授权确认，选允许。</li>
+</ol>
+
+<h3>方法三：局域网 / 网盘传输</h3>
+<p>用「ES 文件浏览器」「小白文件管理器」之类支持局域网共享或网盘的应用，把电脑上的 APK 直接拉到盒子里安装。
+部分盒子自带的应用商店也有内置浏览器，可以直接输入 Releases 页面的下载直链。</p>
+
+<h2>允许未知来源</h2>
+<p>侧载安装都需要放开这项权限：</p>
+<ul>
+  <li><strong>Android 7 ~ 7.1</strong>：设置 → 安全 → 未知来源，打开开关。</li>
+  <li><strong>Android 8 及以上</strong>：权限是按应用授予的。系统会在你点击 APK 时提示，跳转到对应设置页给<em>发起安装的那个应用</em>（文件管理器 / 浏览器）打开「安装未知应用」。</li>
+</ul>
+
+<h2>遥控器怎么操作</h2>
+<p>TVS 做了 D-pad 遥控器按键导航与焦点管理，针对 Android TV 与电视盒子的场景优化，方向键 + 确认键即可完成浏览、搜索与播放控制，不需要外接鼠标。
+播放器内支持倍速、亮度 / 音量调节、片头片尾跳过与断点续播。</p>
+
+<h2>应用内更新</h2>
+<p>从 1.1.2 起，Android 端发现新版本后可以在弹窗里点「立即更新」，应用会自动下载对应架构的 APK、校验 SHA-256 后调起系统安装器，不用再跳回 GitHub 手动下载。</p>
+<p>注意：<strong>1.0.9 及更早版本</strong>的更新检查读的是已经移除的旧 <code>releases/</code> 目录，不会再弹出更新提示，请手动到 <a href="https://github.com/yuluoos/TVBox-tvs/releases">Releases 页面</a> 下载新版。</p>
+
+<h2>装好之后</h2>
+<p>TVS 是空壳应用，首次启动没有任何内容。接下来需要：</p>
+<ul>
+  <li><a href="peekpili.html">导入羊壳（PeekPili）格式的订阅配置</a> —— 点播内容来源</li>
+  <li><a href="live.html">导入 M3U / TXT / JSON 直播源</a> —— 直播频道来源</li>
+</ul>
+
+<div class="related">
+  <h2>相关说明</h2>
+  <ul>
+    <li><a href="ios-ipa.html">iOS 侧载 IPA</a></li>
+    <li><a href="macos.html">macOS DMG</a></li>
+    <li><a href="peekpili.html">羊壳订阅导入</a></li>
+    <li><a href="live.html">直播源导入</a></li>
+    <li><a href="./">返回下载页（APK / IPA / DMG 全部下载）</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p><strong>免责声明：</strong>TVS 为空壳聚合播放器，不内置任何内容与数据源，仅供个人学习与技术研究使用，请在遵守当地法律法规的前提下使用。</p>
+  <p>项目源：<a href="https://github.com/yuluoos/TVBox-tvs">github.com/yuluoos/TVBox-tvs</a> · MIT License · <a href="https://github.com/yuluoos/TVBox-tvs/issues">Issues</a> · <a href="https://github.com/yuluoos/TVBox-tvs/discussions">Discussions</a></p>
+</footer>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "TVS 下载页",
+      "item": "https://yuluoos.github.io/TVBox-tvs/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "电视盒子 / Android TV 安装 TVS APK",
+      "item": "https://yuluoos.github.io/TVBox-tvs/android-tv.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "电视盒子该下哪个 APK？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "绝大多数电视盒子、Android TV 设备和智能电视选 arm64-v8a；2016 年前后的老旧 32 位设备选 armeabi-v7a；安卓模拟器或少数 x86 架构的盒子选 x86_64。上游 nodejs-mobile 没有 32 位 x86 产物，因此不提供 x86 包。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "电视盒子没有浏览器，怎么安装 APK？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "三种常见方式：一是把 APK 拷到 U 盘，插进盒子后用文件管理器点击安装；二是开启盒子的网络调试后，在电脑上执行 adb connect 盒子IP:5555 再 adb install；三是用 ES 文件浏览器一类支持局域网共享或网盘的应用把 APK 传进盒子。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "安装时提示未知来源被阻止怎么办？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Android 7 及以下在 设置 → 安全 → 未知来源 打开总开关。Android 8 及以上是按应用授权的，系统会在点击 APK 时提示，跳转后给发起安装的那个应用（文件管理器或浏览器）打开「安装未知应用」权限即可。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "TVS 最低支持哪个 Android 版本？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "最低 Android 7.0（API 24），targetSdk 36。APK 为 Release 构建但使用调试密钥签名，仅供侧载安装。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "为什么装完占用的空间比 APK 大很多？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "native 库采用压缩打包（useLegacyPackaging），安装时由系统解压到设备上，因此除 APK 本身外还会额外占用约 80 MB。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "TVS 支持遥控器操作吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "支持。TVS 做了 D-pad 遥控器按键导航与焦点管理，针对 Android TV 和电视盒子场景优化，用方向键加确认键即可完成浏览、搜索与播放控制。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Android 端可以在应用内直接升级吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。1.1.2 版本起，发现新版后可在弹窗点「立即更新」，应用会自动下载对应架构的 APK、校验 SHA-256 后调起系统安装器。但 1.0.9 及更早版本的更新检查指向已移除的旧目录，需要手动到 Releases 页面下载。"
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>

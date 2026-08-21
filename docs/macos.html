@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>macOS 安装 TVS DMG：「已损坏」怎么解决、为什么只有 Apple Silicon 版</title>
+<meta name="description" content="TVS（TVBox-tvs）macOS 版为 ad-hoc 自签名 DMG，首次打开会被 Gatekeeper 拦截并提示「已损坏」。本文给出右键打开、隐私与安全性放行、xattr 移除隔离属性三种解法，并说明为什么只提供 Apple Silicon（arm64）版本。">
+<meta name="keywords" content="TVBox macOS,TVS DMG,macOS 已损坏,Gatekeeper 拦截,xattr quarantine,身份不明的开发者,Apple Silicon,arm64 播放器,mac 聚合播放器,TVBox-tvs">
+<link rel="canonical" href="https://yuluoos.github.io/TVBox-tvs/macos.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="macOS 安装 TVS：DMG 下载与「已损坏」解决｜TVS（TVBox-tvs）">
+<meta property="og:description" content="TVS（TVBox-tvs）macOS 版为 ad-hoc 自签名 DMG，首次打开会被 Gatekeeper 拦截并提示「已损坏」。本文给出右键打开、隐私与安全性放行、xattr 移除隔离属性三种解法，并说明为什么只提供 Apple Silicon（arm64）版本。">
+<meta property="og:url" content="https://yuluoos.github.io/TVBox-tvs/macos.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<p class="crumb"><a href="./">TVS（TVBox-tvs）下载页</a> › macOS 安装 TVS：DMG 下载与「已损坏」解决</p>
+
+<header style="padding:14px 0 32px">
+  <h1>macOS 安装 TVS：DMG 下载与「已损坏」解决</h1>
+  <p class="lead">应用是 ad-hoc 自签名，首次打开必被 Gatekeeper 拦截。下面三种放行方式任选其一，另外说明为什么 Intel Mac 用不了。</p>
+</header>
+
+<div class="note">
+  <strong>只有 Apple Silicon 版本。</strong>TVS 内嵌的 Node 运行时上游只提供 <code>darwin-arm64</code> 产物，
+  Intel Mac 无法运行爬虫源，因此不发布 x86_64 版 DMG。M1 / M2 / M3 / M4 及之后的机型都可以用。
+</div>
+
+<h2 id="download">下载与安装</h2>
+<ol class="steps">
+  <li>到 <a href="https://github.com/yuluoos/TVBox-tvs/releases/latest">Releases 最新版</a> 下载 <code>tvs-<i>版本号</i>.dmg</code>（约 41 MB）。</li>
+  <li>双击挂载 DMG。DMG 使用 <strong>LZMA（ULMO）压缩，需要 macOS 10.15+</strong> 才能挂载。</li>
+  <li>把 TVS 拖进「应用程序」文件夹。</li>
+  <li>首次打开<strong>不要双击</strong>，见下一节。</li>
+</ol>
+<p>下载后建议核对 SHA-256，校验值列在 <a href="https://github.com/yuluoos/TVBox-tvs#版本记录">版本记录</a> 里。终端执行：<br>
+<code>shasum -a 256 ~/Downloads/tvs-1.x.x.dmg</code></p>
+
+<h2>提示「已损坏，无法打开」或「无法验证开发者」怎么办</h2>
+<p>这<strong>不是文件损坏</strong>。TVS 是 ad-hoc 自签名、未经 Apple 公证（notarization）的应用，
+Gatekeeper 对从网上下载的这类应用一律拦截，报错文案就是「已损坏，请移到废纸篓」。三种解法，从简单到彻底：</p>
+
+<h3>方法一：右键打开（推荐先试这个）</h3>
+<p>在「访达」的应用程序文件夹里<strong>右键点击 TVS → 打开</strong>，在弹出的对话框里再点一次「打开」。
+这一步告诉系统你明确信任这个应用，之后就能正常双击启动了。</p>
+
+<h3>方法二：隐私与安全性里放行</h3>
+<p>如果双击后被拦截，打开<strong>系统设置 → 隐私与安全性</strong>，往下滚到「安全性」区域，
+会看到一行「已阻止使用"TVS"，因为来自身份不明的开发者」，点右边的<strong>「仍要打开」</strong>。</p>
+
+<h3>方法三：移除隔离属性（前两种都不行时）</h3>
+<p>macOS 会给下载的文件打上 <code>com.apple.quarantine</code> 标记。在终端执行：</p>
+<p><code>xattr -dr com.apple.quarantine /Applications/TVS.app</code></p>
+<p>需要输入密码。执行后再打开即可。较新的 macOS（Sequoia 及之后）收紧了 Gatekeeper，
+方法一有时会失效，这条命令通常是最有效的。</p>
+
+<h2>常见问题排查</h2>
+<div class="tablewrap">
+<table>
+<thead><tr><th>现象</th><th>原因与处理</th></tr></thead>
+<tbody>
+<tr><td>DMG 双击无法挂载</td><td>系统版本低于 macOS 10.15。DMG 用 LZMA 压缩，旧系统不支持。</td></tr>
+<tr><td>「TVS 已损坏，无法打开」</td><td>Gatekeeper 拦截，不是文件坏了。按上面三种方法之一放行。</td></tr>
+<tr><td>Intel Mac 打不开 / 提示架构不符</td><td>不支持。仅提供 Apple Silicon（arm64）版本，原因见页首说明。</td></tr>
+<tr><td>能打开但站点全部加载失败</td><td>内嵌本地服务未起来。完全退出应用后重开；仍不行请到 Issues 反馈并附系统版本。</td></tr>
+<tr><td>打开后一个内容都没有</td><td>正常。TVS 是空壳设计，需要先<a href="peekpili.html">导入羊壳（PeekPili）订阅</a>。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Intel Mac 真的没办法吗</h2>
+<p>目前没有。限制来自上游依赖而不是打包配置：TVS 需要内嵌 Node 运行时来跑 nodejs 类型的 spider 爬虫源，
+而该运行时上游只发布 <code>darwin-arm64</code> 产物。在 Intel Mac 上即使强行运行，爬虫源类站点也无法工作。</p>
+
+<h2>装好之后</h2>
+<p>TVS 是空壳应用，首次启动没有任何内容。接下来需要：</p>
+<ul>
+  <li><a href="peekpili.html">导入羊壳（PeekPili）格式的订阅配置</a> —— 点播内容来源</li>
+  <li><a href="live.html">导入 M3U / TXT / JSON 直播源</a> —— 直播频道来源</li>
+</ul>
+<p>数据用 Isar 数据库加安全存储全部保存在本地，没有云端账号体系，隐私数据不出设备。</p>
+
+<div class="related">
+  <h2>相关说明</h2>
+  <ul>
+    <li><a href="ios-ipa.html">iOS 侧载 IPA</a></li>
+    <li><a href="android-tv.html">电视盒子 / Android TV</a></li>
+    <li><a href="peekpili.html">羊壳订阅导入</a></li>
+    <li><a href="live.html">直播源导入</a></li>
+    <li><a href="./">返回下载页（APK / IPA / DMG 全部下载）</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p><strong>免责声明：</strong>TVS 为空壳聚合播放器，不内置任何内容与数据源，仅供个人学习与技术研究使用，请在遵守当地法律法规的前提下使用。</p>
+  <p>项目源：<a href="https://github.com/yuluoos/TVBox-tvs">github.com/yuluoos/TVBox-tvs</a> · MIT License · <a href="https://github.com/yuluoos/TVBox-tvs/issues">Issues</a> · <a href="https://github.com/yuluoos/TVBox-tvs/discussions">Discussions</a></p>
+</footer>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "TVS 下载页",
+      "item": "https://yuluoos.github.io/TVBox-tvs/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "macOS 安装 TVS：DMG 下载与「已损坏」解决",
+      "item": "https://yuluoos.github.io/TVBox-tvs/macos.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "macOS 打开 TVS 提示「已损坏，无法打开」怎么办？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "文件并没有损坏。TVS 是 ad-hoc 自签名、未经 Apple 公证的应用，Gatekeeper 会拦截并显示这个文案。解决办法有三种：在访达里右键点击应用选「打开」；到 系统设置 → 隐私与安全性 点「仍要打开」；或在终端执行 xattr -dr com.apple.quarantine /Applications/TVS.app 移除隔离属性。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Intel Mac 能用 TVS 吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不能。TVS 需要内嵌 Node 运行时来运行 nodejs 类型的 spider 爬虫源，而该运行时上游只提供 darwin-arm64 产物，因此仅发布 Apple Silicon（arm64）版本。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "DMG 双击打不开、无法挂载是什么原因？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DMG 使用 LZMA（ULMO）压缩，需要 macOS 10.15 或更高版本才能挂载。系统版本过低会挂载失败。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "右键打开也没用，还是被拦截怎么办？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "较新的 macOS 收紧了 Gatekeeper，右键打开有时会失效。此时在终端执行 xattr -dr com.apple.quarantine /Applications/TVS.app 并输入密码，移除下载文件的隔离标记后即可正常启动。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "怎么确认下载的 DMG 没被篡改？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "每个版本的 SHA-256 校验值都列在仓库的版本记录里。在终端执行 shasum -a 256 加上 DMG 路径，把输出和版本记录中的值对比即可。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "我的数据会上传到云端吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不会。TVS 使用 Isar 数据库加安全存储，所有数据全部保存在本地设备，没有云端账号体系。"
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>
