@@ -53,12 +53,16 @@ def replace_download_section(text, version, files):
     return pattern.sub(lambda _: section, text, count=1)
 
 
-def insert_rows(text, heading, rows):
-    """在指定小节的表格分隔行（| --- |…）后面插入新行。"""
+def replace_rows(text, heading, rows):
+    """用新行替换指定小节表格里的所有已有数据行。"""
     idx = text.index(heading)
     sep = text.index('| --- |', idx)
-    line_end = text.index('\n', sep) + 1
-    return text[:line_end] + ''.join(row + '\n' for row in rows) + text[line_end:]
+    data_start = text.index('\n', sep) + 1
+    data_end = data_start
+    while data_end < len(text) and text.startswith('|', data_end):
+        line_end = text.find('\n', data_end)
+        data_end = len(text) if line_end == -1 else line_end + 1
+    return text[:data_start] + ''.join(row + '\n' for row in rows) + text[data_end:]
 
 
 def main():
@@ -83,7 +87,7 @@ def main():
 
     if 'ipa' in files:
         item = files['ipa']
-        text = insert_rows(text, '### iOS（IPA）', [
+        text = replace_rows(text, '### iOS（IPA）', [
             f'| {version} (build {build}) | [{item["name"]}]({download_url(version, item["name"])}) '
             f'| {item["size"]} MB | `{item["sha256"]}` | {date} |'
         ])
@@ -95,11 +99,11 @@ def main():
         if abi in files
     ]
     if apk_rows:
-        text = insert_rows(text, '### Android（APK）', apk_rows)
+        text = replace_rows(text, '### Android（APK）', apk_rows)
 
     if 'dmg' in files:
         item = files['dmg']
-        text = insert_rows(text, '### macOS（DMG）', [
+        text = replace_rows(text, '### macOS（DMG）', [
             f'| {version} (build {build}) | [{item["name"]}]({download_url(version, item["name"])}) '
             f'| {item["size"]} MB | `{item["sha256"]}` | {date} |'
         ])
@@ -107,11 +111,12 @@ def main():
     marker = re.search(r'^### \d+\.\d+\.\d+ 更新内容$', text, re.M)
     if not marker:
         raise SystemExit('README 里找不到任何「### x.y.z 更新内容」段落')
-    text = (
-        text[: marker.start()]
-        + f'### {version} 更新内容\n\n{notes}\n\n'
-        + text[marker.start():]
-    )
+    next_heading = re.search(r'^## ', text[marker.end():], re.M)
+    notes_end = len(text) if not next_heading else marker.end() + next_heading.start()
+    suffix = text[notes_end:]
+    text = text[: marker.start()] + f'### {version} 更新内容\n\n{notes}\n'
+    if suffix:
+        text += '\n' + suffix.lstrip('\n')
 
     io.open(args.readme, 'w', encoding='utf-8').write(text)
     print(f'README 已更新到 {version}', file=sys.stderr)

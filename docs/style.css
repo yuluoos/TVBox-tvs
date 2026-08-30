@@ -30,6 +30,12 @@ a{color:var(--accent)}
 .btn.alt{background:transparent;color:var(--accent);border:1px solid var(--accent);margin-left:8px}
 .alts{margin-top:10px;font-size:13px;color:var(--muted)}
 .alts a{margin-right:12px}
+.tg-panel{display:flex;align-items:center;justify-content:space-between;gap:28px;
+  background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+.tg-copy{flex:1;min-width:0}
+.tg-copy h3{margin:0 0 8px;font-size:18px}
+.tg-copy p{margin:0;color:var(--muted)}
+.tg-qr{display:block;width:220px;height:220px;max-width:100%;border-radius:12px;background:#fff}
 .note{background:var(--card);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
   padding:14px 16px;margin:20px 0;font-size:14.5px;color:var(--muted)}
 .note strong{color:var(--fg)}
@@ -53,3 +59,7 @@ footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
 .related li{font-size:14.5px;margin:4px 0}
 .steps{padding-left:22px}
 .steps li{margin:8px 0}
+@media (max-width:640px){
+  .tg-panel{flex-direction:column;align-items:stretch;gap:18px}
+  .tg-qr{align-self:center;width:min(260px,100%);height:auto}
+}

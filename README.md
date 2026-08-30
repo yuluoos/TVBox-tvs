@@ -18,6 +18,12 @@
 | iOS / iPadOS | [自签名 IPA](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.6/tvs-selfsign-1.1.6.ipa) | 需自行签名侧载（如爱思、巨魔、AltStore、自签 API） |
 | macOS（Apple Silicon） | [DMG](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.6/tvs-1.1.6.dmg) | 首次打开需在「隐私与安全性」中放行 |
 
+### 加入 TG 群
+
+扫码加入 TG 群，获取使用交流、问题反馈与更新通知。
+
+<img src="docs/assets/tg-group-qr.jpeg" alt="TVS TG 群二维码" width="280">
+
 全部版本见 [Releases 页面](https://github.com/yuluoos/TVBox-tvs/releases)；最新版 SHA-256 校验值见文末[最新版本](#最新版本)。
 也可以访问下载页：**<https://yuluoos.github.io/TVBox-tvs/>**
 

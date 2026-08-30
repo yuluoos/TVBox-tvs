@@ -65,9 +65,9 @@ def build_block(version, files):
         '<div class="grid">\n'
         + '\n'.join(cards) + '\n'
         '</div>\n'
-        '<p style="font-size:14px;color:var(--muted)">全部版本、历史包与 SHA-256 校验值见\n'
-        f'  <a href="https://github.com/{REPO}/releases">Releases 页面</a> 与\n'
-        f'  <a href="https://github.com/{REPO}#版本记录">版本记录</a>。</p>\n'
+        '<p style="font-size:14px;color:var(--muted)">本页仅展示最新版；其他版本见\n'
+        f'  <a href="https://github.com/{REPO}/releases">Releases 页面</a>，最新版 SHA-256 校验值见\n'
+        f'  <a href="https://github.com/{REPO}#最新版本">最新版本</a>。</p>\n'
         f'{END}'
     )
 
