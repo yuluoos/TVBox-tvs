@@ -10,13 +10,13 @@
 >
 > A TVBox-style shell media player built with Flutter for Android TV, iOS and macOS — no built-in content, bring your own subscription and live sources.
 
-## 下载（最新版 1.1.7）
+## 下载（最新版 1.1.8）
 
 | 平台 | 下载 | 说明 |
 | --- | --- | --- |
-| Android / Android TV / 电视盒子 | [arm64-v8a APK](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.7/tvs-1.1.7-arm64-v8a.apk) · [armeabi-v7a](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.7/tvs-1.1.7-armeabi-v7a.apk) · [x86_64](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.7/tvs-1.1.7-x86_64.apk) | 绝大多数设备选 arm64-v8a |
-| iOS / iPadOS | [自签名 IPA](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.7/tvs-selfsign-1.1.7.ipa) | 需自行签名侧载（如爱思、巨魔、AltStore、自签 API） |
-| macOS（Apple Silicon） | [DMG](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.7/tvs-1.1.7.dmg) | 首次打开需在「隐私与安全性」中放行 |
+| Android / Android TV / 电视盒子 | [arm64-v8a APK](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.8/tvs-1.1.8-arm64-v8a.apk) · [armeabi-v7a](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.8/tvs-1.1.8-armeabi-v7a.apk) · [x86_64](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.8/tvs-1.1.8-x86_64.apk) | 绝大多数设备选 arm64-v8a |
+| iOS / iPadOS | [自签名 IPA](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.8/tvs-selfsign-1.1.8.ipa) | 需自行签名侧载（如爱思、巨魔、AltStore、自签 API） |
+| macOS（Apple Silicon） | [DMG](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.8/tvs-1.1.8.dmg) | 首次打开需在「隐私与安全性」中放行 |
 
 ### 加入 TG 群
 
@@ -114,7 +114,7 @@ TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应
 
 | 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- |
-| 1.1.7 (build 2) | [tvs-selfsign-1.1.7.ipa](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.7/tvs-selfsign-1.1.7.ipa) | 34 MB | `4789caac7bb252bdb948edac0ccd08bb60b19b49085367486f01aee950ca2aea` | 2026-08-30 |
+| 1.1.8 (build 3) | [tvs-selfsign-1.1.8.ipa](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.8/tvs-selfsign-1.1.8.ipa) | 32 MB | `e2d3ad6722815dea9f694488c8dfa2cc9c71fc75e9de61ad689f0cf5f7ad8f50` | 2026-09-02 |
 
 - IPA 为自签名（selfsign）Release 构建
 - 每个发布版本均对应一个 git tag
@@ -126,9 +126,9 @@ TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应
 
 | 版本 | ABI | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- | --- |
-| 1.1.7 (build 2) | arm64-v8a | [tvs-1.1.7-arm64-v8a.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.7/tvs-1.1.7-arm64-v8a.apk) | 32 MB | `b7fa0e53fcc2a59ce6217189f697aa73c543f9543c0e74522d7ee77bbfe20490` | 2026-08-30 |
-| 1.1.7 (build 2) | armeabi-v7a | [tvs-1.1.7-armeabi-v7a.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.7/tvs-1.1.7-armeabi-v7a.apk) | 31 MB | `c2c46fea2a23beeaf3641c35ef5d85b7468bf89acd33bd0e9cc9d535cad4e8a2` | 2026-08-30 |
-| 1.1.7 (build 2) | x86_64 | [tvs-1.1.7-x86_64.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.7/tvs-1.1.7-x86_64.apk) | 35 MB | `115cb1a9284d11bfda2dd9c2f6830827f1cc368f7644cd9d03fa1257760bc7b1` | 2026-08-30 |
+| 1.1.8 (build 3) | arm64-v8a | [tvs-1.1.8-arm64-v8a.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.8/tvs-1.1.8-arm64-v8a.apk) | 33 MB | `097edecf0c54f68d1667e64f304cec3fa3abb911d7ae1c8a0104dac467f4b9dc` | 2026-09-02 |
+| 1.1.8 (build 3) | armeabi-v7a | [tvs-1.1.8-armeabi-v7a.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.8/tvs-1.1.8-armeabi-v7a.apk) | 32 MB | `2ffeb375ab60955cd93430bb62d3f238730f1f501892c9235baf14ae0d1dc740` | 2026-09-02 |
+| 1.1.8 (build 3) | x86_64 | [tvs-1.1.8-x86_64.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.8/tvs-1.1.8-x86_64.apk) | 34 MB | `cd2248102248ee8476e58f2b30ba8aa44b3f6646fbd624f3a53f6060e1fcad94` | 2026-09-02 |
 
 - 最低支持 Android 7.0（API 24），targetSdk 36
 - APK 为 Release 构建，使用调试密钥签名，仅供侧载安装
@@ -139,15 +139,16 @@ TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应
 
 | 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- |
-| 1.1.7 (build 2) | [tvs-1.1.7.dmg](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.7/tvs-1.1.7.dmg) | 41 MB | `0e00210161d9277c27890196ead63a8c69520ab221005955ecfe768af2f8f57a` | 2026-08-30 |
+| 1.1.8 (build 3) | [tvs-1.1.8.dmg](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.1.8/tvs-1.1.8.dmg) | 41 MB | `984c2bd09037edd13ed2d808e27dd4b5c7c0297aa3abdfd877c74409036ff0e8` | 2026-09-02 |
 
 - 仅提供 Apple Silicon（arm64）版本：内置的 Node 运行时上游只有 darwin-arm64 产物，Intel Mac 无法运行爬虫源
 - DMG 使用 LZMA（ULMO）压缩，需 macOS 10.15+ 挂载
 - 应用为 ad-hoc 自签名，首次打开会被 Gatekeeper 拦截；请在「访达」中右键点击 → 打开，或到「系统设置 → 隐私与安全性」中允许
 
-### 1.1.7 更新内容
+### 1.1.8 更新内容
 
-- 音频播放新增自动封面与同步歌词匹配，并完善多来源回退与缓存。
-- 新增有声书播放信息展示，优化标题、章节、作者与主播识别。
-- 优化手机、横屏及电视端音频播放布局与歌词体验。
-- 改进搜索结果相关性，减少无关内容干扰。
+- 播放内核迁移至 FVP 与 just_audio，强化原生硬件解码、会话管理和启动/退出稳定性。
+- 优化点播、直播与 HLS 的代理、缓存和清晰度选择，并新增加载流量显示。
+- 改善音频后台连续播放、自动切集与有声书上下文保留。
+- 完善弹幕来源选择、LogVar 配置及电视端手机输入与遥控器交互。
+- 优化深色主题、画面模式和播放器界面细节。
