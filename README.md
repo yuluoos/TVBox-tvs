@@ -31,12 +31,12 @@
 [iOS / iPadOS 侧载 IPA](https://yuluoos.github.io/TVBox-tvs/ios-ipa.html) ·
 [电视盒子 / Android TV 装 APK](https://yuluoos.github.io/TVBox-tvs/android-tv.html) ·
 [macOS 安装 DMG](https://yuluoos.github.io/TVBox-tvs/macos.html) ·
-[羊壳（PeekPili）订阅导入](https://yuluoos.github.io/TVBox-tvs/peekpili.html) ·
+[羊壳（PeekPro）订阅导入](https://yuluoos.github.io/TVBox-tvs/peekpili.html) ·
 [直播源导入（M3U / TXT / JSON）](https://yuluoos.github.io/TVBox-tvs/live.html)
 
 ---
 
-TVS 是一款基于 Flutter 开发的跨平台（iOS / Android / macOS）聚合播放器，采用羊壳（PeekPili）一类的"空壳"设计：**应用本体不内置任何内容、频道或数据源**，安装后是一个空壳，所有内容均由用户自行导入订阅配置和直播源后才可用。**订阅仅适用于羊壳（PeekPili）格式**。应用只提供解析、聚合与播放能力，内容的可用性由用户导入的源决定。
+TVS 是一款基于 Flutter 开发的跨平台（iOS / Android / macOS）聚合播放器，采用羊壳（PeekPro）一类的"空壳"设计：**应用本体不内置任何内容、频道或数据源**，安装后是一个空壳，所有内容均由用户自行导入订阅配置和直播源后才可用。**订阅仅适用于羊壳（PeekPro）格式**。应用只提供解析、聚合与播放能力，内容的可用性由用户导入的源决定。
 
 本仓库用于管理 TVS 的打包产物（IPA / APK / DMG），最新版本信息见文末。
 
@@ -46,14 +46,14 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android / macOS）聚合�
 
 ## 空壳设计说明
 
-- 首次启动无任何内容，需在"订阅"页导入订阅配置；**仅支持羊壳（PeekPili）订阅**，其他格式的订阅不保证可用。
+- 首次启动无任何内容，需在"订阅"页导入订阅配置；**仅支持羊壳（PeekPro）订阅**，其他格式的订阅不保证可用。
 - 站点、分类、搜索结果、直播频道等全部来自用户导入的源，卸载配置即恢复空壳状态。
 - 应用不提供、不推荐、不分发任何内容源，仅作为个人学习与技术研究用途。
 
 ## 功能介绍
 
 ### 订阅与源管理
-- 支持导入羊壳（PeekPili）订阅配置，多订阅管理、切换当前生效配置。
+- 支持导入羊壳（PeekPro）订阅配置，多订阅管理、切换当前生效配置。
 - 内嵌本地服务运行爬虫源，完整支持 nodejs 类型 spider 站点。
 - 应用前后台切换时自动检测并恢复本地服务，保证长时间使用稳定。
 
@@ -93,7 +93,7 @@ TVS 是一款基于 Flutter 开发的跨平台（iOS / Android / macOS）聚合�
 
 ## 关键词 / Keywords
 
-TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应用、Android TV 播放器、ATV apk、TV 版播放器、遥控器 D-pad 适配、羊壳、PeekPili 订阅、直播源播放器、M3U / IPTV 播放器、Flutter 播放器、media_kit、libmpv、nodejs spider 爬虫源、自签名 IPA、iOS 侧载、macOS DMG。
+TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应用、Android TV 播放器、ATV apk、TV 版播放器、遥控器 D-pad 适配、羊壳、PeekPro 订阅、直播源播放器、M3U / IPTV 播放器、Flutter 播放器、media_kit、libmpv、nodejs spider 爬虫源、自签名 IPA、iOS 侧载、macOS DMG。
 
 `tvbox` `android-tv` `iptv-player` `m3u` `flutter` `media-kit` `libmpv` `ipa` `apk` `dmg` `self-signed-ipa` `shell-player`
 
