@@ -8,15 +8,15 @@
 >
 > A TVBox-style shell media player built with Flutter for Android TV, iOS and macOS — no built-in content, bring your own subscription and live sources.
 
-## 下载（最新版 1.2.6）
+## 下载（最新版 1.2.7）
 
 | 平台 | 下载 | 说明 |
 | --- | --- | --- |
-| Android / TV（arm64-v8a） | [GitHub 原链](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6-arm64-v8a.apk) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6-arm64-v8a.apk) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6-arm64-v8a.apk) | 绝大多数手机与电视盒子 |
-| Android / TV（armeabi-v7a） | [GitHub 原链](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6-armeabi-v7a.apk) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6-armeabi-v7a.apk) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6-armeabi-v7a.apk) | 按设备架构选择 |
-| Android / TV（x86_64） | [GitHub 原链](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6-x86_64.apk) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6-x86_64.apk) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6-x86_64.apk) | 按设备架构选择 |
-| iOS / iPadOS | [自签名 IPA（GitHub）](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-selfsign-1.2.6.ipa) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-selfsign-1.2.6.ipa) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-selfsign-1.2.6.ipa) | 需自行签名侧载（如爱思、巨魔、AltStore、自签 API） |
-| macOS（Apple Silicon） | [DMG（GitHub）](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6.dmg) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6.dmg) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6.dmg) | 首次打开需在「隐私与安全性」中放行 |
+| Android / TV（arm64-v8a） | [GitHub 原链](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-arm64-v8a.apk) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-arm64-v8a.apk) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-arm64-v8a.apk) | 绝大多数手机与电视盒子 |
+| Android / TV（armeabi-v7a） | [GitHub 原链](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-armeabi-v7a.apk) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-armeabi-v7a.apk) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-armeabi-v7a.apk) | 按设备架构选择 |
+| Android / TV（x86_64） | [GitHub 原链](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-x86_64.apk) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-x86_64.apk) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-x86_64.apk) | 按设备架构选择 |
+| iOS / iPadOS | [自签名 IPA（GitHub）](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-selfsign-1.2.7.ipa) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-selfsign-1.2.7.ipa) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-selfsign-1.2.7.ipa) | 需自行签名侧载（如爱思、巨魔、AltStore、自签 API） |
+| macOS（Apple Silicon） | [DMG（GitHub）](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7.dmg) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7.dmg) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7.dmg) | 首次打开需在「隐私与安全性」中放行 |
 
 GitHub 下载慢时可尝试表中的第三方加速；速度因地区和运营商而异，失败可切换线路。下载后请核对文末 SHA-256。
 
@@ -130,7 +130,7 @@ TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应
 
 | 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- |
-| 1.2.6 (build 11) | [tvs-selfsign-1.2.6.ipa](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-selfsign-1.2.6.ipa) | 32 MB | `2cbf379ed74e1e3d7e8cce04d653e3f0ffbec5e0192f911d2ac158760a3abd54` | 2026-10-27 |
+| 1.2.7 (build 12) | [tvs-selfsign-1.2.7.ipa](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-selfsign-1.2.7.ipa) | 34 MB | `8820acbe04c0f900e569eef4a9a82b3bfd43be1e0e652fc8bdb6e740411f2cf3` | 2026-11-04 |
 
 - IPA 为自签名（selfsign）Release 构建
 - 每个发布版本均对应一个 git tag
@@ -142,9 +142,9 @@ TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应
 
 | 版本 | ABI | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- | --- |
-| 1.2.6 (build 11) | arm64-v8a | [tvs-1.2.6-arm64-v8a.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6-arm64-v8a.apk) | 31 MB | `a9f202ef83f5516c934bd9295ceb11685439b1915d96cd78570b5e1fd3410ba1` | 2026-10-27 |
-| 1.2.6 (build 11) | armeabi-v7a | [tvs-1.2.6-armeabi-v7a.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6-armeabi-v7a.apk) | 30 MB | `97f8158c7cae3cfccb2dafa65c1ad4d81e36d73598d673eb157fe12a2b94ffda` | 2026-10-27 |
-| 1.2.6 (build 11) | x86_64 | [tvs-1.2.6-x86_64.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6-x86_64.apk) | 33 MB | `72ce8eb976af1465cdb1004fb0d986c2ec0efed3ba3756cbcfc1af9f13f4b784` | 2026-10-27 |
+| 1.2.7 (build 12) | arm64-v8a | [tvs-1.2.7-arm64-v8a.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-arm64-v8a.apk) | 33 MB | `0db0ee31affae0fc9190756cc948a89c7512dd00670b755f7876b8f2fba4f0bd` | 2026-11-04 |
+| 1.2.7 (build 12) | armeabi-v7a | [tvs-1.2.7-armeabi-v7a.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-armeabi-v7a.apk) | 31 MB | `3149ec021fcc29ac63240514eb45e6f59a69662c78c5e493900659773241687b` | 2026-11-04 |
+| 1.2.7 (build 12) | x86_64 | [tvs-1.2.7-x86_64.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-x86_64.apk) | 34 MB | `8a4d4aea426e1f88513fd46b06005f5396758f3381d45fa2d5aff3dfaf7df400` | 2026-11-04 |
 
 - 最低支持 Android 7.0（API 24），targetSdk 36
 - APK 为 Release 构建，使用调试密钥签名，仅供侧载安装
@@ -155,20 +155,15 @@ TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应
 
 | 版本 | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- |
-| 1.2.6 (build 11) | [tvs-1.2.6.dmg](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.6/tvs-1.2.6.dmg) | 36 MB | `7c698c2dabfd68cf49e03dd9b0dab0012e6649e6d139551dc1f338e06deede8c` | 2026-10-27 |
+| 1.2.7 (build 12) | [tvs-1.2.7.dmg](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7.dmg) | 37 MB | `28652c5b16628d70c4ee1bdff5e35acafc0dd36ea15f32b6d73d97f6b039e1fe` | 2026-11-04 |
 
 - 仅提供 Apple Silicon（arm64）版本：内置的 Node 运行时上游只有 darwin-arm64 产物，Intel Mac 无法运行爬虫源
 - DMG 使用 LZMA（ULMO）压缩，需 macOS 10.15+ 挂载
 - 应用为 ad-hoc 自签名，首次打开会被 Gatekeeper 拦截；请在「访达」中右键点击 → 打开，或到「系统设置 → 隐私与安全性」中允许
 
-### 1.2.6 更新内容
+### 1.2.7 更新内容
 
-- 使用本地 yl_player 0.3.0-dev.5 源码构建，播放器提交：`53f9cb0e3bb6faee525df8a37adbbef050ef8327`。
-- 修复 Android Release 构建中播放器 JNI 回调被 R8 裁剪的问题，并增加安装包内回调完整性检查。
-- 修复 Android 原生视频显示层截获电视遥控焦点的问题，恢复进度条与顶部按钮之间的方向导航。
-- 纳入本地播放器针对 Android 7–9 电视设备的原生 SurfaceView/隧道播放、传统厂商硬件解码兼容性与 E-AC-3 音频处理改进。
-- 保留 Android App 内更新加速、GitHub 原链、两条第三方下载加速备用入口及 SHA-256 校验。
-
-### 已知限制
-
-本版本经维护者确认接受风险后作为正式版发布。本地播放器仍存在未闭环的格式播放验收、部分 iOS 解码/输出与自动码率恢复问题，部分物理设备、DRM 和性能资格验证尚未完成；TVS 自动化测试和安装包构建通过不代表播放器完整设备/格式矩阵全部通过。如遇兼容性问题，可从历史 Release 下载旧版。
+- 修复退出播放页或切换剧集时可能卡住的问题。听剧准备超时或播放失败后，可重新选择音频；快速切集时，旧请求不会覆盖最新选择。
+- 调整底部播放控件的位置，避免被系统安全区域遮挡。视频播放失败后，仍可打开选集、切换线路或调整设置；无法打开 MP4 时会提示检查文件或更换片源。
+- 改善 iOS 播放 DASH 视频时的网络中断处理：优先播放已缓冲的内容，短暂中断后可恢复播放。
+- 兼容性提示：部分媒体格式、iOS 解码输出和自动码率切换尚未完成全设备验证，播放效果取决于设备和片源。
