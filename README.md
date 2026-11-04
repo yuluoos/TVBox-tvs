@@ -1,9 +1,7 @@
 # TVS — TVBox 类空壳聚合播放器（Android TV / iOS / macOS）
 
 [![Release](https://img.shields.io/github/v/release/yuluoos/TVBox-tvs?label=release&color=blue)](https://github.com/yuluoos/TVBox-tvs/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/yuluoos/TVBox-tvs/total?label=downloads&color=success)](https://github.com/yuluoos/TVBox-tvs/releases)
 [![Platform](https://img.shields.io/badge/platform-Android%20TV%20%7C%20Android%20%7C%20iOS%20%7C%20macOS-lightgrey)](https://github.com/yuluoos/TVBox-tvs/releases/latest)
-[![Stars](https://img.shields.io/github/stars/yuluoos/TVBox-tvs?style=flat&color=yellow)](https://github.com/yuluoos/TVBox-tvs/stargazers)
 [![License](https://img.shields.io/github/license/yuluoos/TVBox-tvs?color=informational)](LICENSE)
 
 > TVBox 类空壳聚合播放器 · Flutter 跨平台 · Android TV / 电视盒子 / iOS / iPadOS / macOS · 提供 APK / IPA / DMG 直接下载
@@ -103,7 +101,7 @@ TVS 是一款跨平台空壳聚合播放器，支持 Android 手机、Android TV
 
 ### 其他
 - 播放历史管理页、设置中心（含各功能项细分设置）。
-- 订阅配置与播放记录使用本地存储；播放、内容查询和使用统计等功能会发起网络请求。
+- 订阅配置与播放记录保存在设备上；在线播放和内容查询需要网络连接。
 
 ## 技术栈
 
