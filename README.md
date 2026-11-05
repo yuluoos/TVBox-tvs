@@ -12,9 +12,9 @@
 
 | 平台 | 下载 | 说明 |
 | --- | --- | --- |
-| Android / TV（arm64-v8a） | [GitHub 原链](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-arm64-v8a.apk) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-arm64-v8a.apk) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-arm64-v8a.apk) | 绝大多数手机与电视盒子 |
-| Android / TV（armeabi-v7a） | [GitHub 原链](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-armeabi-v7a.apk) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-armeabi-v7a.apk) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-armeabi-v7a.apk) | 按设备架构选择 |
-| Android / TV（x86_64） | [GitHub 原链](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-x86_64.apk) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-x86_64.apk) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-x86_64.apk) | 按设备架构选择 |
+| Android / TV（arm64-v8a） | [GitHub 原链](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-build10012-arm64-v8a.apk) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-build10012-arm64-v8a.apk) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-build10012-arm64-v8a.apk) | 绝大多数手机与电视盒子 |
+| Android / TV（armeabi-v7a） | [GitHub 原链](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-build10012-armeabi-v7a.apk) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-build10012-armeabi-v7a.apk) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-build10012-armeabi-v7a.apk) | 按设备架构选择 |
+| Android / TV（x86_64） | [GitHub 原链](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-build10012-x86_64.apk) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-build10012-x86_64.apk) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-build10012-x86_64.apk) | 按设备架构选择 |
 | iOS / iPadOS | [自签名 IPA（GitHub）](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-selfsign-1.2.7.ipa) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-selfsign-1.2.7.ipa) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-selfsign-1.2.7.ipa) | 需自行签名侧载（如爱思、巨魔、AltStore、自签 API） |
 | macOS（Apple Silicon） | [DMG（GitHub）](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7.dmg) · [GHFast（第三方加速）](https://ghfast.top/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7.dmg) · [GH-Proxy（第三方加速）](https://gh-proxy.org/https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7.dmg) | 首次打开需在「隐私与安全性」中放行 |
 
@@ -142,9 +142,9 @@ TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应
 
 | 版本 | ABI | 文件 | 大小 | SHA-256 | 打包日期 |
 | --- | --- | --- | --- | --- | --- |
-| 1.2.7 (build 12) | arm64-v8a | [tvs-1.2.7-arm64-v8a.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-arm64-v8a.apk) | 33 MB | `0db0ee31affae0fc9190756cc948a89c7512dd00670b755f7876b8f2fba4f0bd` | 2026-11-04 |
-| 1.2.7 (build 12) | armeabi-v7a | [tvs-1.2.7-armeabi-v7a.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-armeabi-v7a.apk) | 31 MB | `3149ec021fcc29ac63240514eb45e6f59a69662c78c5e493900659773241687b` | 2026-11-04 |
-| 1.2.7 (build 12) | x86_64 | [tvs-1.2.7-x86_64.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-x86_64.apk) | 34 MB | `8a4d4aea426e1f88513fd46b06005f5396758f3381d45fa2d5aff3dfaf7df400` | 2026-11-04 |
+| 1.2.7 (build 10012) | arm64-v8a | [tvs-1.2.7-build10012-arm64-v8a.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-build10012-arm64-v8a.apk) | 33 MB | `af9cb75fc84c33d36f68fc8e16420ed21549ac2450a8581723d5122a68aed65f` | 2026-11-04 |
+| 1.2.7 (build 10012) | armeabi-v7a | [tvs-1.2.7-build10012-armeabi-v7a.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-build10012-armeabi-v7a.apk) | 31 MB | `9ab32d1e85e77b86239ffa418cf003373aba24c16c7280c907a4784ecf2088b2` | 2026-11-04 |
+| 1.2.7 (build 10012) | x86_64 | [tvs-1.2.7-build10012-x86_64.apk](https://github.com/yuluoos/TVBox-tvs/releases/download/v1.2.7/tvs-1.2.7-build10012-x86_64.apk) | 34 MB | `592c95b478909ab3568ac6585e838730345f5b5ca7fa6fcfa36d2cddebc2e921` | 2026-11-04 |
 
 - 最低支持 Android 7.0（API 24），targetSdk 36
 - APK 为 Release 构建，使用调试密钥签名，仅供侧载安装
@@ -163,6 +163,7 @@ TVBox、tvbox 类客户端、空壳播放器、聚合播放器、电视盒子应
 
 ### 1.2.7 更新内容
 
+- Android 安装包重新打包，提高内部版本号，显示版本仍为 1.2.7；请重新检查更新或下载新安装包。
 - 修复退出播放页或切换剧集时可能卡住的问题。听剧准备超时或播放失败后，可重新选择音频；快速切集时，旧请求不会覆盖最新选择。
 - 调整底部播放控件的位置，避免被系统安全区域遮挡。视频播放失败后，仍可打开选集、切换线路或调整设置；无法打开 MP4 时会提示检查文件或更换片源。
 - 改善 iOS 播放 DASH 视频时的网络中断处理：优先播放已缓冲的内容，短暂中断后可恢复播放。
